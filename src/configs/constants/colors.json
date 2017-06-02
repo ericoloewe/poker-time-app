@@ -1,0 +1,10 @@
+{
+    "BRAND": {
+        "PRIMARY": "#fded0e",
+        "SECONDARY": "#211f20"
+    },
+    "HEADER": {
+        "TEXT": "#211f20",
+        "BACKGROUND": "#fded0e"
+    }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "BaseProject",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "android": "node node_modules/react-native/local-cli/cli.js run-android",
+    "test": "jest"
+  },
+  "dependencies": {
+    "native-base": "^2.1.0",
+    "react": "^15.5.4",
+    "react-native": "0.42.3",
+    "react-navigation": "^1.0.0-beta.11",
+    "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "babel-jest": "20.0.3",
+    "babel-preset-react-native": "1.9.2",
+    "jest": "20.0.4",
+    "react-test-renderer": "~15.4.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
