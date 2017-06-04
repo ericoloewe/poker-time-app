@@ -21,9 +21,14 @@ export class Routes {
         var stacks = {}; 
 
         this.routes.forEach((stack) => {
+            let headerMode = 'screen';
             let Component = Containers[stack.component];
 
             if (Component != null) {
+                if (stack.title == null)  {
+                    headerMode = 'none';
+                }
+
                 stacks[stack.component] = {
                     screen: Containers[stack.component],
                     navigationOptions: ({navigation}) => ({
@@ -33,6 +38,7 @@ export class Routes {
                             fontWeight: STYLES.HEADER.TEXT.FONT_WEIGHT,
                             alignSelf: STYLES.HEADER.TEXT.ALIGN_SELF
                         },
+                        headerMode,
                         headerStyle: {
                             backgroundColor: COLORS.HEADER.BACKGROUND
                         }

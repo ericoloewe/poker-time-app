@@ -1,8 +1,7 @@
 [
     {
-        "key": "home",
-        "title": "Home",
-        "component": "Home"
+        "key": "main",
+        "component": "MainTab"
     },
     {
         "key": "about",

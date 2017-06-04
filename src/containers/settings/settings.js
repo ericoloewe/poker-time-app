@@ -1,17 +1,17 @@
 /**
- * Containers / Home
+ * Containers / Settings
  */
 
 import * as React from "react";
-import { styles } from "./home.styles";
+import { styles } from "./settings.styles";
 import { TemplateBuilder } from '../../styles/index';
 import { Text, Icon } from 'native-base';
 
-export class Home extends React.Component {
+export class Settings extends React.Component {
     static navigationOptions = {
-        tabBarLabel: 'Home',
+        tabBarLabel: 'Settings',
         tabBarIcon: ({ tintColor }) => (
-            <Icon name="apps" style={[styles.icon, {tintColor: tintColor}]}/>
+            <Icon name="settings" style={[styles.icon, {tintColor: tintColor}]}/>
         )
     };
 
@@ -20,9 +20,9 @@ export class Home extends React.Component {
      */
     render() {
         return TemplateBuilder.extend(
-            <Text>Home</Text>
+            <Text>Settings</Text>
         );
     }
 }
 
-export { Home as Component };
+export { Settings as Component };
