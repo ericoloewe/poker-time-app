@@ -8,7 +8,9 @@ import { Home } from "../../containers/index";
 import { StackNavigator } from 'react-navigation';
 
 export class Routes {
-    static stackOptions = {};
+    static stackOptions = {
+        headerMode: 'none'
+    };
 
     constructor() {
         this.load();
@@ -21,9 +23,14 @@ export class Routes {
         var stacks = {}; 
 
         this.routes.forEach((stack) => {
+            let headerMode = 'screen';
             let Component = Containers[stack.component];
 
             if (Component != null) {
+                if (stack.title == null)  {
+                    headerMode = 'none';
+                }
+
                 stacks[stack.component] = {
                     screen: Containers[stack.component],
                     navigationOptions: ({navigation}) => ({
@@ -36,7 +43,7 @@ export class Routes {
                         headerStyle: {
                             backgroundColor: COLORS.HEADER.BACKGROUND
                         }
-                    })                    
+                    })
                 };
             }
         });

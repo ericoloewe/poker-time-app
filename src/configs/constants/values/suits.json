@@ -1,0 +1,18 @@
+{
+    "HEART": {
+        "TITLE": "Copa",
+        "CODE": "♥"
+    },
+    "CLUB": {
+        "TITLE": "Paus",
+        "CODE": "♣"
+    },
+    "DIAMOND": {
+        "TITLE": "Ouro",
+        "CODE": "♦"
+    },
+    "SPADE": {
+        "TITLE": "Espada",
+        "CODE": "♠"
+    }
+}
