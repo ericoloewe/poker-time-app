@@ -1,7 +1,7 @@
 import * as React from "react";
 import { styles } from "./main.styles";
 import { TemplateBuilder } from "../../styles/index";
-import { Container, Content, StyleProvider } from 'native-base';
+import { Container, StyleProvider } from 'native-base';
 
 export class Main {
     
@@ -12,9 +12,7 @@ export class Main {
         return (
             <StyleProvider style={TemplateBuilder.getActualTheme()}>
                 <Container>
-                    <Content>
-                        { content }
-                    </Content>
+                    { content }
                 </Container>
             </StyleProvider>
         );

@@ -7,5 +7,10 @@
         "key": "about",
         "title": "Sobre",
         "component": "About"
+    },
+    {
+        "key": "try-luck",
+        "title": "Tentar sorte",
+        "component": "TryLuck"
     }
 ]

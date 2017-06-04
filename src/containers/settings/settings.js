@@ -11,7 +11,7 @@ export class Settings extends React.Component {
     static navigationOptions = {
         tabBarLabel: 'Settings',
         tabBarIcon: ({ tintColor }) => (
-            <Icon name="settings" style={[styles.icon, {tintColor: tintColor}]}/>
+            <Icon name="settings" style={{color: tintColor}}/>
         )
     };
 

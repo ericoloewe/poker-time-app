@@ -2,4 +2,5 @@
  * Actions
  */
 
-export { RouteActions } from "./route";
+export { RouteAction } from "./route";
+export { TryLuckAction } from "./try-luck";

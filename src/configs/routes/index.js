@@ -8,7 +8,9 @@ import { Home } from "../../containers/index";
 import { StackNavigator } from 'react-navigation';
 
 export class Routes {
-    static stackOptions = {};
+    static stackOptions = {
+        headerMode: 'none'
+    };
 
     constructor() {
         this.load();
@@ -38,11 +40,10 @@ export class Routes {
                             fontWeight: STYLES.HEADER.TEXT.FONT_WEIGHT,
                             alignSelf: STYLES.HEADER.TEXT.ALIGN_SELF
                         },
-                        headerMode,
                         headerStyle: {
                             backgroundColor: COLORS.HEADER.BACKGROUND
                         }
-                    })                    
+                    })
                 };
             }
         });

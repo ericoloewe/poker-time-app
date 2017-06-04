@@ -1,15 +1,13 @@
 import { Reducer } from "redux";
 import { Routes } from "../configs/routes";
-import { RouteActions } from "../actions";
+import { RouteAction } from "../actions";
 
 /**
  * @description reducers for routes
  */
 export class RouteReducer {
     constructor() {
-        this._defaultState = {
-            actualRoute: Routes.defaultRoute()
-        };
+        this._defaultState = {};
     }
 
     /**
@@ -23,7 +21,7 @@ export class RouteReducer {
                 nextState = Object.assign({}, state);
 
                 switch (action.type) {
-                    case RouteActions.CHANGE_ROUTE: {
+                    case RouteAction.CHANGE_ROUTE: {
                         // TODO: change route
                         break;
                     }

@@ -1,7 +1,7 @@
 /**
  * @description actions for routes
  */
-export class RouteActions {
+export class RouteAction {
     static CHANGE_ROUTE = "CHANGE_ROUTE";
 
     /**
@@ -18,7 +18,7 @@ export class RouteActions {
      */
     changeRoute(scene) {
         return {
-            type: RouteActions.CHANGE_ROUTE,
+            type: RouteAction.CHANGE_ROUTE,
             scene
         };
     }
