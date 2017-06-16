@@ -3,11 +3,13 @@
  */
 
 import * as React from "react";
+import { View } from 'react-native';
 import { styles } from "./try-luck.styles";
 import { TemplateBuilder } from '../../styles/index';
 import { TryLuckAction } from "../../actions/index";
+import { Card } from "../../components/index";
 import store from "../../stores/index";
-import { Body, Button, Card, CardItem, Content, Text } from 'native-base';
+import { Body, Button, Content, Text, Grid, Col } from 'native-base';
 
 export class TryLuck extends React.Component {
 
@@ -38,21 +40,13 @@ export class TryLuck extends React.Component {
      */
     render() {
         return TemplateBuilder.extend(
-            <Content>
-                <Button block onPress={() => store.dispatch({ type: TryLuckAction.TRY_LUCK })}>
+            <Content style={styles.table} contentContainerStyle={styles.table_contentContainer}> 
+                <Button block onPress={() => store.dispatch({ type: TryLuckAction.TRY_LUCK })} style={styles.button}>
                     <Text>Tentar</Text>
                 </Button>
-                <Card>
-                    <CardItem header>
-                        <Text>Sua sorte é: </Text>
-                    </CardItem>
-                    <CardItem>
-                        <Body>
-                            <Text>{this.state.luck.card}</Text>
-                            <Text>{this.state.luck.nipe}</Text>
-                        </Body>
-                    </CardItem>
-                </Card>
+                <View style={styles.card}>
+                    <Card type={this.state.luck.nipe} order={this.state.luck.card}/> 
+                </View>
             </Content>
         );
     }
