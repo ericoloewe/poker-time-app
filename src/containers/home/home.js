@@ -29,7 +29,7 @@ export class Home extends React.Component {
                     <Icon name='calculator' />
                     <Text>Calculadora</Text>
                 </Button>
-                <Button large iconLeft block>
+                <Button large iconLeft block onPress={() => {this.props.navigation.navigate('Bankhall')}}>
                     <Icon name='pulse' />
                     <Text>Bankhall</Text>
                 </Button>

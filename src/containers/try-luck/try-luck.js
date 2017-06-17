@@ -40,7 +40,7 @@ export class TryLuck extends React.Component {
      */
     render() {
         return TemplateBuilder.extend(
-            <Content style={styles.table} contentContainerStyle={styles.table_contentContainer}> 
+            <Content style={styles.table} contentContainerStyle={styles.table_contentContainer}>
                 <Button block onPress={() => store.dispatch({ type: TryLuckAction.TRY_LUCK })} style={styles.button}>
                     <Text>Tentar</Text>
                 </Button>

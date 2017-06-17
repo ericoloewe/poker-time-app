@@ -3,7 +3,7 @@
  */
 
 import * as React from "react";
-import { styles } from "./bank-hall.styles";
+import { styles } from "./bankhall.styles";
 import { TemplateBuilder } from '../../styles/index';
 import { Content } from 'native-base';
 
@@ -16,7 +16,7 @@ export class Bankhall extends React.Component {
     }
 
     resetState() {
-        this.state = {};
+        this.state = {}; 
     }
 
     bindEvents() {

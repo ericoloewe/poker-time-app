@@ -5,7 +5,7 @@
 import * as React from "react";
 import { styles } from "./about.styles";
 import { TemplateBuilder } from '../../styles/index';
-import { Text } from 'native-base';
+import { Content, Header, Body, Title, Text } from 'native-base';
 
 export class About extends React.Component {
     /**
@@ -13,7 +13,14 @@ export class About extends React.Component {
      */
     render() {
         return TemplateBuilder.extend(
-            <Text>Home</Text>
+            <Content>
+                <Header>
+                    <Body>
+                        <Title>Sobre</Title>
+                    </Body>
+                </Header>
+                <Text>Somos uma iniciativa propria...</Text>
+            </Content>
         );
     }
 }

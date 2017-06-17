@@ -1,7 +1,8 @@
 {
     "BRAND": {
         "PRIMARY": "#fded0e",
-        "SECONDARY": "#211f20"
+        "SECONDARY": "#211f20",
+        "TERNARY": "#49A077"
     },
     "HEADER": {
         "TEXT": "#211f20",

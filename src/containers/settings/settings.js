@@ -5,7 +5,7 @@
 import * as React from "react";
 import { styles } from "./settings.styles";
 import { TemplateBuilder } from '../../styles/index';
-import { Text, Icon } from 'native-base';
+import { Button, Content, Icon, Text } from 'native-base';
 
 export class Settings extends React.Component {
     static navigationOptions = {
@@ -20,7 +20,12 @@ export class Settings extends React.Component {
      */
     render() {
         return TemplateBuilder.extend(
-            <Text>Settings</Text>
+            <Content>
+                <Button large iconLeft block onPress={() => {this.props.navigation.navigate('About')}}> 
+                    <Icon name='book' />
+                    <Text>Sobre</Text>
+                </Button>
+            </Content>
         );
     }
 }

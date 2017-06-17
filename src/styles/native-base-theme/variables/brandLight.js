@@ -280,6 +280,7 @@ export default {
   borderRadiusBase: (platform === 'ios') ? 5 : 2,
   borderWidth: (1/PixelRatio.getPixelSizeForLayoutSize(1)),
   contentPadding: 10,
+  contentBackground: COLORS.BRAND.TERNARY,
 
   get darkenHeader() {
     return color(this.tabBgColor).darken(0.03).hexString();
