@@ -4,6 +4,7 @@
 
 import * as React from "react";
 import { styles } from "./about.styles";
+import { LB } from '../../configs/index';
 import { TemplateBuilder } from '../../styles/index';
 import { Content, Header, Body, Title, Text } from 'native-base';
 
@@ -16,10 +17,10 @@ export class About extends React.Component {
             <Content>
                 <Header>
                     <Body>
-                        <Title>Sobre</Title>
+                        <Title>{LB.build("CONTAINERS.ABOUT.TITLE")}</Title>
                     </Body>
                 </Header>
-                <Text>Somos uma iniciativa propria...</Text>
+                <Text>{LB.build("CONTAINERS.ABOUT.TEXT")}</Text>
             </Content>
         );
     }
