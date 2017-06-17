@@ -1,3 +1,6 @@
 {
-    "ABOUT": "Sobre"
+    "ABOUT": "Sobre",
+    "TAB_BAR": {
+        "LABEL": "Configurações"
+    }
 }
