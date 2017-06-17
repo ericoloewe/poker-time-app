@@ -4,6 +4,7 @@
 
 import * as React from "react";
 import { styles } from "./home.styles";
+import { LB } from '../../configs/index';
 import { TemplateBuilder } from '../../styles/index';
 import { Button, Content, Icon, Text } from 'native-base';
 
@@ -23,15 +24,15 @@ export class Home extends React.Component {
             <Content>
                 <Button large iconLeft block onPress={() => {this.props.navigation.navigate('TryLuck')}}> 
                     <Icon name='baseball' />
-                    <Text>Jogar sorte</Text>
+                    <Text>{LB.build("CONTAINERS.HOME.TRY_LUCK")}</Text>
                 </Button>
                 <Button large iconLeft block>
                     <Icon name='calculator' />
-                    <Text>Calculadora</Text>
+                    <Text>{LB.build("CONTAINERS.HOME.CALC")}</Text>
                 </Button>
                 <Button large iconLeft block onPress={() => {this.props.navigation.navigate('Bankhall')}}>
                     <Icon name='pulse' />
-                    <Text>Bankhall</Text>
+                    <Text>{LB.build("CONTAINERS.HOME.BANKHALL")}</Text>
                 </Button>
             </Content>
         );

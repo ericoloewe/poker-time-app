@@ -5,6 +5,7 @@
 import * as React from "react";
 import { View } from 'react-native';
 import { styles } from "./try-luck.styles";
+import { LB } from '../../configs/index';
 import { TemplateBuilder } from '../../styles/index';
 import { TryLuckAction } from "../../actions/index";
 import { Card } from "../../components/index";
@@ -42,7 +43,7 @@ export class TryLuck extends React.Component {
         return TemplateBuilder.extend(
             <Content style={styles.table} contentContainerStyle={styles.table_contentContainer}>
                 <Button block onPress={() => store.dispatch({ type: TryLuckAction.TRY_LUCK })} style={styles.button}>
-                    <Text>Tentar</Text>
+                    <Text>{LB.build("CONTAINERS.TRY_LUCK.BUTTON")}</Text>
                 </Button>
                 <View style={styles.card}>
                     <Card type={this.state.luck.nipe} order={this.state.luck.card}/> 

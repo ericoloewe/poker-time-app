@@ -5,7 +5,8 @@
 import * as React from "react";
 import { styles } from "./bankhall.styles";
 import { TemplateBuilder } from '../../styles/index';
-import { Content } from 'native-base';
+import { LB } from '../../configs/index';
+import { Content, Header, Body, Title } from 'native-base';
 
 export class Bankhall extends React.Component {
 
@@ -27,7 +28,12 @@ export class Bankhall extends React.Component {
      */
     render() {
         return TemplateBuilder.extend(
-            <Content> 
+            <Content>
+                <Header>
+                    <Body>
+                        <Title>{LB.build("CONTAINERS.BANKHALL.TITLE")}</Title>
+                    </Body>
+                </Header>
             </Content>
         );
     }
