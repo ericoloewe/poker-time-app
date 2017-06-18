@@ -9,3 +9,5 @@ export { Settings } from "./settings/settings";
 export { MainTab } from "./tab-navigation/tab-navigation";
 export { TryLuck } from "./try-luck/try-luck";
 export { Bankhall } from "./bankhall/bankhall";
+export { BankhallBalance } from "./bankhall-balance/bankhall-balance";
+export { BankhallRegister } from "./bankhall-register/bankhall-register";

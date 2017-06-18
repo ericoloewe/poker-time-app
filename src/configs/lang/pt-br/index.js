@@ -1,8 +1,10 @@
-import { ABOUT, BANKHALL, HOME, SETTINGS, TRY_LUCK } from "./containers/index";
+import { ABOUT, BANKHALL, BANKHALL_BALANCE, BANKHALL_REGISTER, HOME, SETTINGS, TRY_LUCK } from "./containers/index";
 
 const CONTAINERS = {
     ABOUT,
     BANKHALL,
+    BANKHALL_BALANCE,
+    BANKHALL_REGISTER,
     HOME,
     TRY_LUCK,
     SETTINGS

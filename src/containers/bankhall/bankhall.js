@@ -6,7 +6,7 @@ import * as React from "react";
 import { styles } from "./bankhall.styles";
 import { TemplateBuilder } from '../../styles/index';
 import { LB } from '../../configs/index';
-import { Content, Header, Body, Title } from 'native-base';
+import { Button, Content, Header, Body, Title, Text, Icon } from 'native-base';
 
 export class Bankhall extends React.Component {
 
@@ -34,6 +34,14 @@ export class Bankhall extends React.Component {
                         <Title>{LB.build("CONTAINERS.BANKHALL.TITLE")}</Title>
                     </Body>
                 </Header>
+                <Button large iconLeft block onPress={() => {this.props.navigation.navigate('BankhallRegister')}}> 
+                    <Icon name='paper' />
+                    <Text>{LB.build("CONTAINERS.BANKHALL.REGISTER")}</Text>
+                </Button>
+                <Button large iconLeft block onPress={() => {this.props.navigation.navigate('BankhallBalance')}}> 
+                    <Icon name='calculator' />
+                    <Text>{LB.build("CONTAINERS.BANKHALL.BALANCE")}</Text>
+                </Button>
             </Content>
         );
     }
