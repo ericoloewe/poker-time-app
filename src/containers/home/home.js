@@ -10,7 +10,6 @@ import { Button, Content, Icon, Text } from 'native-base';
 
 export class Home extends React.Component {
     static navigationOptions = {
-        tabBarLabel: LB.build("CONTAINERS.HOME.TAB_BAR.LABEL"),
         tabBarIcon: ({ tintColor }) => (
             <Icon name="apps" style={{color: tintColor}}/>
         )
