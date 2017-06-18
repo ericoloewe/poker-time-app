@@ -6,8 +6,9 @@ const CONTAINERS = {
     BANKHALL_BALANCE,
     BANKHALL_REGISTER,
     HOME,
+    SETTINGS,
     TRY_LUCK,
-    SETTINGS
+    TOURNAMENT_REGISTER
 };
 
 export {
