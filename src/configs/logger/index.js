@@ -27,9 +27,14 @@ export class Logger {
     }
 
     _logOfType(type, args) {
+        let instanceName = "Logger";
+
+        if (this.actualInstance !== undefined) {
+            instanceName = this.actualInstance.name;
+        }
+
         const defaultLog = [
-            String.format("{0}: {1}\n", type.toUpperCase()),
-            String.format("{0}: ", this.actualInstance.name)
+            `${new Date()}: ${type.toUpperCase()}\n ${instanceName}:`
         ];
 
         console[type].apply(console, defaultLog.concat(args));
