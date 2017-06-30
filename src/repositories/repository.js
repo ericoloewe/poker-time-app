@@ -3,7 +3,7 @@ import {
     AsyncStorage
 } from "react-native";
 import {
-    LOGGER
+    Logger
 } from "../configs/index";
 
 const LOGGER = new Logger(Repository);
@@ -34,8 +34,18 @@ export class Repository {
         return item;
     }
 
-    _formatItemHash(uuid) {
-        return String.format('@{0}:{1}', this.constructor.name, uuid);
+    async list(from, to) {
+        let items = [];
+
+        try {
+            let keys = this._getKeys(from, to);
+
+            items = await AsyncStorage.multiGet(keys, this._logError);
+        } catch (ex) {
+            LOGGER.error("We had some errors to retrieve data", ex);
+        }
+
+        return item;
     }
 
     async _getNextUUID() {
@@ -54,6 +64,26 @@ export class Repository {
         }
 
         return nextId;
+    }
+
+    async _getKeys(from, to) {
+        let keys = [];
+
+        try {
+            keys = await AsyncStorage.getAllKeys();
+        } catch (ex) {
+            LOGGER.error("We had some errors to retrieve keys", ex);
+        }
+
+        return keys.filter((k) => k.contains(this._formatModelHash())).slice(from, to);
+    }
+
+    _formatModelHash() {
+        return String.format('@{0}', this.constructor.name);
+    }
+
+    _formatItemHash(uuid) {
+        return String.format('{0}:{1}', this._formatModelHash(), uuid);
     }
 
     _logError() {
