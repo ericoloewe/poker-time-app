@@ -12,11 +12,11 @@ const LOGGER = new Logger(Repository);
  * @description repository
  */
 export class Repository {
-    constructor() {}
-
     async save(item) {
         try {
-            await AsyncStorage.setItem(this._formatItemHash(await this._getNextUUID()), value, this._logError);
+            item.id = await this._getNextUUID();
+
+            await AsyncStorage.setItem(this._formatItemHash(item.id), JSON.stringify(item), this._logError);
         } catch (ex) {
             LOGGER.error("We had some errors to save data", ex);
         }
@@ -26,7 +26,7 @@ export class Repository {
         let item = null;
 
         try {
-            item = await AsyncStorage.getItem(this._formatItemHash(uuid), this._logError);
+            item = JSON.parse(await AsyncStorage.getItem(this._formatItemHash(uuid), this._logError));
         } catch (ex) {
             LOGGER.error("We had some errors to retrieve data", ex);
         }
@@ -34,18 +34,18 @@ export class Repository {
         return item;
     }
 
-    async list(from, to) {
+    async list(from, to, sort) {
         let items = [];
 
         try {
-            let keys = this._getKeys(from, to);
+            let keys = this._getKeys(from, to, sort);
 
             items = await AsyncStorage.multiGet(keys, this._logError);
         } catch (ex) {
             LOGGER.error("We had some errors to retrieve data", ex);
         }
 
-        return item;
+        return items;
     }
 
     async _getNextUUID() {
@@ -66,16 +66,20 @@ export class Repository {
         return nextId;
     }
 
-    async _getKeys(from, to) {
+    async _getKeys(from, to, sort = null) {
         let keys = [];
 
         try {
-            keys = await AsyncStorage.getAllKeys();
+            keys = await AsyncStorage.getAllKeys().filter((k) => k.contains(this._formatModelHash()));
         } catch (ex) {
             LOGGER.error("We had some errors to retrieve keys", ex);
         }
 
-        return keys.filter((k) => k.contains(this._formatModelHash())).slice(from, to);
+        if (sort !== null) {
+            keys = keys.sort(sort);
+        }
+
+        return keys.slice(from, to);
     }
 
     _formatModelHash() {

@@ -27,13 +27,6 @@ export class TournamentRegister extends React.Component {
     }
 
     bindEvents() {
-        this.bindTournamentUpdateEvent();
-    }
-
-    bindTournamentUpdateEvent() { 
-        store.subscribe(() => {
-            this.setState(store.getState().tryLuck);
-        });
     }
     
     /**
@@ -69,7 +62,13 @@ export class TournamentRegister extends React.Component {
     }
 
     submit() {
-        store.dispatch({ type: TournamentAction.REGISTER });
+        store.dispatch(TournamentAction.register({
+            name: this.state.name,
+            buyn: this.state.name,
+            date: this.state.date
+        }));
+
+        this.props.navigation.navigate('Tournament');
     }
 }
 

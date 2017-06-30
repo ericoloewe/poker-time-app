@@ -30,5 +30,9 @@
     {
         "key": "tournament-register",
         "component": "TournamentRegister"
+    },
+    {
+        "key": "tournament-list",
+        "component": "TournamentList"
     }
 ]

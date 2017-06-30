@@ -9,16 +9,17 @@ export class TournamentAction {
      */
     generate() {
         return {
-            register: this.register
+            register: TournamentAction.register
         };
     }
 
     /**
      * @description register
      */
-    register() {
+    static register(tournament) {
         return {
-            type: TournamentAction.REGISTER
+            type: TournamentAction.REGISTER,
+            tournament
         };
     }
 }

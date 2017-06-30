@@ -7,7 +7,8 @@ import {
     SETTINGS,
     TRY_LUCK,
     TOURNAMENT,
-    TOURNAMENT_REGISTER
+    TOURNAMENT_REGISTER,
+    TOURNAMENT_LIST
 } from "./containers/index";
 
 const CONTAINERS = {
@@ -19,7 +20,8 @@ const CONTAINERS = {
     SETTINGS,
     TRY_LUCK,
     TOURNAMENT,
-    TOURNAMENT_REGISTER
+    TOURNAMENT_REGISTER,
+    TOURNAMENT_LIST
 };
 
 export {

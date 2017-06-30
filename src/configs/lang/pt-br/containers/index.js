@@ -7,6 +7,7 @@ const SETTINGS = require("./settings.json");
 const TRY_LUCK = require("./try-luck.json");
 const TOURNAMENT = require("./tournament.json");
 const TOURNAMENT_REGISTER = require("./tournament-register.json");
+const TOURNAMENT_LIST = require("./tournament-list.json");
 
 export {
     ABOUT,
@@ -17,5 +18,6 @@ export {
     SETTINGS,
     TRY_LUCK,
     TOURNAMENT,
-    TOURNAMENT_REGISTER
+    TOURNAMENT_REGISTER,
+    TOURNAMENT_LIST
 }

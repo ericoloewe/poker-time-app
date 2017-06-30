@@ -25,7 +25,7 @@ export class Tournament extends React.Component {
                     <Icon name='paper' />
                     <Text>{LB.build("CONTAINERS.TOURNAMENT.REGISTER")}</Text>
                 </Button>
-                <Button large iconLeft block onPress={() => {this.props.navigation.navigate('TounamentList')}}> 
+                <Button large iconLeft block onPress={() => {this.props.navigation.navigate('TournamentList')}}>
                     <Icon name='grid' />
                     <Text>{LB.build("CONTAINERS.TOURNAMENT.LIST")}</Text>
                 </Button>
