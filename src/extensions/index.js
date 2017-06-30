@@ -1,5 +1,6 @@
 /**
- * Extensions / String
+ * Extensions
  */
 
 export * from "./string";
+export * from "./array";
