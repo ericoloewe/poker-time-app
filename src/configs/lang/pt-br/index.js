@@ -1,4 +1,14 @@
-import { ABOUT, BANKHALL, BANKHALL_BALANCE, BANKHALL_REGISTER, HOME, SETTINGS, TRY_LUCK } from "./containers/index";
+import {
+    ABOUT,
+    BANKHALL,
+    BANKHALL_BALANCE,
+    BANKHALL_REGISTER,
+    HOME,
+    SETTINGS,
+    TRY_LUCK,
+    TOURNAMENT,
+    TOURNAMENT_REGISTER
+} from "./containers/index";
 
 const CONTAINERS = {
     ABOUT,
@@ -8,6 +18,7 @@ const CONTAINERS = {
     HOME,
     SETTINGS,
     TRY_LUCK,
+    TOURNAMENT,
     TOURNAMENT_REGISTER
 };
 

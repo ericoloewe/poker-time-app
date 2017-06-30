@@ -5,6 +5,7 @@ const BANKHALL_REGISTER = require("./bankhall-register.json");
 const HOME = require("./home.json");
 const SETTINGS = require("./settings.json");
 const TRY_LUCK = require("./try-luck.json");
+const TOURNAMENT = require("./tournament.json");
 const TOURNAMENT_REGISTER = require("./tournament-register.json");
 
 export {
@@ -15,5 +16,6 @@ export {
     HOME,
     SETTINGS,
     TRY_LUCK,
+    TOURNAMENT,
     TOURNAMENT_REGISTER
 }

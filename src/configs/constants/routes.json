@@ -24,6 +24,10 @@
         "component": "BankhallBalance"
     },
     {
+        "key": "tournament",
+        "component": "Tournament"
+    },
+    {
         "key": "tournament-register",
         "component": "TournamentRegister"
     }
