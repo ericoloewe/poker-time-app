@@ -7,6 +7,7 @@ import { styles } from "./tournament-list.styles";
 import { TemplateBuilder } from '../../styles/index';
 import { Content, Header, Body, Title } from 'native-base';
 import { LB } from '../../configs/index';
+import { TournamentListComponent } from '../../components/index';
 
 export class TournamentList extends React.Component {
 
@@ -36,6 +37,7 @@ export class TournamentList extends React.Component {
                         <Title>{LB.build("CONTAINERS.TOURNAMENT_LIST.TITLE")}</Title>
                     </Body>
                 </Header>
+                <TournamentListComponent />
             </Content>
         );
     }

@@ -9,7 +9,9 @@ export class TournamentReducer {
     constructor() {
         this.repository = new TournamentRepository();
         this._defaultState = {
-            tournaments: []
+            tournaments: [],
+            isFetching: false,
+            error: false
         };
     }
 
@@ -18,10 +20,39 @@ export class TournamentReducer {
      */
     generate() {
         return (state = this._defaultState, action) => {
-            switch (action.type) { 
+            switch (action.type) {
                 case TournamentAction.REGISTER: {
-                    state = this.saveTournament(state);
+                    state = {
+                        ...state,
+                        tournaments: [
+                            ...state.tournaments,
+                            this.saveTournament(action.tournament)
+                        ]
+                    };
                     break;
+                }
+                case TournamentAction.DELETE: {
+                    state.tournaments.splice(0, 1);
+                    break;
+                }
+                case TournamentAction.FETCH: {
+                    state = {
+                        ...state,
+                        isFetching: true
+                    };
+                }
+                case TournamentAction.FETCH_SUCCESS: {
+                    state = {
+                        ...state,
+                        isFetching: false
+                    };
+                }
+                case TournamentAction.FETCH_FAILURE: {
+                    state = {
+                        ...state,
+                        isFetching: false,
+                        error: true
+                    };
                 }
             }
 
@@ -32,8 +63,16 @@ export class TournamentReducer {
     /**
      * @description save tournament
      */    
-    saveTournament(state) {
-        this.repository.save(state);
-        return Object.assign(state, {});
+    saveTournament(tournament) {
+        this.repository.save(tournament);
+
+        return tournament;
+    }
+
+    /**
+     * @description delete tournament
+     */    
+    deleteTournament(tournament) {
+        this.repository.remove(tournament);
     }
 }

@@ -34,8 +34,11 @@ export class Logger {
         }
 
         const defaultLog = [
-            `${new Date()}: ${type.toUpperCase()}\n ${instanceName}:`
+            `${new Date()}: ${type.toUpperCase()}`,
+            `${instanceName}:`
         ];
+
+        console.log(args);
 
         console[type].apply(console, defaultLog.concat(args));
     }

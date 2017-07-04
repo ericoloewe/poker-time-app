@@ -64,11 +64,11 @@ export class TournamentRegister extends React.Component {
     submit() {
         store.dispatch(TournamentAction.register({
             name: this.state.name,
-            buyn: this.state.name,
+            buyn: this.state.buyn,
             date: this.state.date
         }));
 
-        this.props.navigation.navigate('Tournament');
+        this.props.navigation.goBack();
     }
 }
 
