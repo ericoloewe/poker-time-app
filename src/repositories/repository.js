@@ -38,14 +38,16 @@ export class Repository {
         let items = [];
 
         try {
-            let keys = this._getKeys(from, to, sort);
+            let keys = await this._getKeys(from, to, sort);
 
             items = await AsyncStorage.multiGet(keys, this._logError);
         } catch (ex) {
             LOGGER.error("We had some errors to retrieve data", ex);
         }
 
-        return items;
+        return items.map(keySet => {
+            return JSON.parse(keySet[1]);
+        });
     }
 
     async _getNextUUID() {
@@ -70,7 +72,7 @@ export class Repository {
         let keys = [];
 
         try {
-            keys = await AsyncStorage.getAllKeys().filter((k) => k.contains(this._formatModelHash()));
+            keys = (await AsyncStorage.getAllKeys()).filter(k => k.contains(this._formatModelHash()));
         } catch (ex) {
             LOGGER.error("We had some errors to retrieve keys", ex);
         }
@@ -83,14 +85,16 @@ export class Repository {
     }
 
     _formatModelHash() {
-        return String.format('@{0}', this.constructor.name);
+        return `@${this.constructor.name}`;
     }
 
     _formatItemHash(uuid) {
-        return String.format('{0}:{1}', this._formatModelHash(), uuid);
+        return `${this._formatModelHash()}:${uuid}`;
     }
 
-    _logError() {
-        LOGGER.error.apply(LOGGER, arguments);
+    _logError(error) {
+        if (error !== null) {
+            LOGGER.error.apply(LOGGER, arguments);
+        }
     }
 }

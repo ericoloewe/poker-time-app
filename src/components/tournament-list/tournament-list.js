@@ -3,7 +3,8 @@
  */
 
 import * as React from "react";
-import { View, Alert, Text } from 'react-native';
+import { View, Alert } from 'react-native';
+import { Text } from 'native-base';
 import { styles } from "./tournament-list.styles";
 import { TemplateBuilder } from '../../styles/index';
 import { TournamentItem } from "../index";
@@ -75,9 +76,11 @@ export class TournamentList extends React.Component {
     renderList() {
         let rendered = <Text>Is fetching</Text>;
 
+        console.log("this.state", this.state);
+
         if (!this.state.isFetching) {
             if (this.state.hasError) {
-                rendered = <Text>Error</Text>;
+                rendered = <Text>Error here</Text>;
             } else {
                 rendered = this.state.tournaments.map((t, i) => {
                     return <TournamentItem key={i} tournament={t} onLongPress={(tournamentId) => this.deleteTournament(tournamentId)}/>

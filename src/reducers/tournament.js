@@ -58,6 +58,7 @@ export class TournamentReducer {
                         isFetching: true
                     };
                     this.fetchTournaments();
+                    break;
                 }
                 case TournamentAction.FETCH_SUCCESS: {
                     state = {
@@ -65,6 +66,7 @@ export class TournamentReducer {
                         isFetching: false,
                         tournaments: action.tournaments
                     };
+                    break;
                 }
                 case TournamentAction.FETCH_FAILURE: {
                     state = {
@@ -73,6 +75,7 @@ export class TournamentReducer {
                         hasError: true,
                         errors: action.errors
                     };
+                    break;
                 }
             }
 
