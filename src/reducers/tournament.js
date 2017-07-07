@@ -1,3 +1,4 @@
+import store from "../stores/index";
 import { TournamentAction } from "../actions/index";
 import { VALUES } from '../configs/index';
 import { TournamentRepository } from '../repositories/index';
@@ -8,10 +9,12 @@ import { TournamentRepository } from '../repositories/index';
 export class TournamentReducer {
     constructor() {
         this.repository = new TournamentRepository();
+
         this._defaultState = {
             tournaments: [],
             isFetching: false,
-            error: false
+            isSaving: false,
+            hasError: false
         };
     }
 
@@ -21,18 +24,32 @@ export class TournamentReducer {
     generate() {
         return (state = this._defaultState, action) => {
             switch (action.type) {
-                case TournamentAction.REGISTER: {
+                case TournamentAction.SAVE: {
                     state = {
                         ...state,
-                        tournaments: [
-                            ...state.tournaments,
-                            this.saveTournament(action.tournament)
-                        ]
+                        isSaving: true
+                    };
+                    this.saveTournament(action.tournament);
+                    break;
+                }
+                case TournamentAction.SAVE_SUCCESS: {
+                    state = {
+                        ...state,
+                        isSaving: false
+                    };
+                    break;
+                }
+                case TournamentAction.SAVE_FAILURE: {
+                    state = {
+                        ...state,
+                        isSaving: false,
+                        hasError: true,
+                        errors: action.errors
                     };
                     break;
                 }
                 case TournamentAction.DELETE: {
-                    state.tournaments.splice(0, 1);
+                    this.deleteTournament(action.tournamentId);
                     break;
                 }
                 case TournamentAction.FETCH: {
@@ -40,18 +57,21 @@ export class TournamentReducer {
                         ...state,
                         isFetching: true
                     };
+                    this.fetchTournaments();
                 }
                 case TournamentAction.FETCH_SUCCESS: {
                     state = {
                         ...state,
-                        isFetching: false
+                        isFetching: false,
+                        tournaments: action.tournaments
                     };
                 }
                 case TournamentAction.FETCH_FAILURE: {
                     state = {
                         ...state,
                         isFetching: false,
-                        error: true
+                        hasError: true,
+                        errors: action.errors
                     };
                 }
             }
@@ -64,9 +84,18 @@ export class TournamentReducer {
      * @description save tournament
      */    
     saveTournament(tournament) {
-        this.repository.save(tournament);
+        this.repository.save(tournament)
+            .then(tournament => store.dispatch(TournamentAction.saveSuccess(tournament)))
+            .catch(errors => store.dispatch(TournamentAction.saveFailure(errors)));
+    }
 
-        return tournament;
+    /**
+     * @description list tournaments
+     */    
+    fetchTournaments() {
+        this.repository.list()
+            .then(tournaments => store.dispatch(TournamentAction.fetchSuccess(tournaments)))
+            .catch(errors => store.dispatch(TournamentAction.fetchFailure(errors)));
     }
 
     /**

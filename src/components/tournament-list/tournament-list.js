@@ -3,7 +3,7 @@
  */
 
 import * as React from "react";
-import { View, Alert } from 'react-native';
+import { View, Alert, Text } from 'react-native';
 import { styles } from "./tournament-list.styles";
 import { TemplateBuilder } from '../../styles/index';
 import { TournamentItem } from "../index";
@@ -32,14 +32,6 @@ export class TournamentList extends React.Component {
             let tournament = store.getState().tournament;
 
             this.setState(tournament);
-
-            if (tournament.isFetching) {
-                if (!!tournament) {
-                    store.dispatch(TournamentAction.fetchSuccess());
-                } else {
-                    store.dispatch(TournamentAction.fetchFailure());
-                }
-            }
         });
     }
 
@@ -74,11 +66,26 @@ export class TournamentList extends React.Component {
      * @description render the template
      */
     render() {
-        return (<View>{
-            this.state.tournaments.map((t, i) => {
-                return <TournamentItem key={i} tournament={t} onLongPress={(tournamentId) => this.deleteTournament(tournamentId)}/>
-            })
-        }</View>);
+        return (<View>{this.renderList()}</View>);
+    }
+
+    /**
+     * @description render the template
+     */
+    renderList() {
+        let rendered = <Text>Is fetching</Text>;
+
+        if (!this.state.isFetching) {
+            if (this.state.hasError) {
+                rendered = <Text>Error</Text>;
+            } else {
+                rendered = this.state.tournaments.map((t, i) => {
+                    return <TournamentItem key={i} tournament={t} onLongPress={(tournamentId) => this.deleteTournament(tournamentId)}/>
+                });
+            }
+        }
+
+        return rendered;
     }
 }
 

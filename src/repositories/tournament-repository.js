@@ -8,18 +8,14 @@ const LOGGER = new Logger(TournamentRepository);
  */
 export class TournamentRepository extends Repository {
     save(tournament) {
-        try {
-            super.save(tournament);
-        } catch(ex) {
-            LOGGER.error("We had some erro to save tournament", ex);
-        }
+        return super.save(tournament);
     }
 
-    get() {
-        return super.get();
+    get(id) {
+        return super.get(id);
     }
 
-    list() {
-        return super.list();
+    list(from, to, sort) {
+        return super.list(from, to, sort);
     }
 }

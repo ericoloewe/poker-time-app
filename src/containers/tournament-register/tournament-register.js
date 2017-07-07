@@ -62,7 +62,7 @@ export class TournamentRegister extends React.Component {
     }
 
     submit() {
-        store.dispatch(TournamentAction.register({
+        store.dispatch(TournamentAction.save({
             name: this.state.name,
             buyn: this.state.buyn,
             date: this.state.date
