@@ -18,4 +18,8 @@ export class TournamentRepository extends Repository {
     list(from, to, sort) {
         return super.list(from, to, sort);
     }
+
+    remove(id) {
+        return super.remove(id);
+    }
 }

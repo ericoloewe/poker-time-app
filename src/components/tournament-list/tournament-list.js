@@ -76,8 +76,6 @@ export class TournamentList extends React.Component {
     renderList() {
         let rendered = <Text>Is fetching</Text>;
 
-        console.log("this.state", this.state);
-
         if (!this.state.isFetching) {
             if (this.state.hasError) {
                 rendered = <Text>Error here</Text>;

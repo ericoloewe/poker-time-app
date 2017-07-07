@@ -14,6 +14,7 @@ export class TournamentReducer {
             tournaments: [],
             isFetching: false,
             isSaving: false,
+            isDeleting: false,
             hasError: false
         };
     }
@@ -48,10 +49,6 @@ export class TournamentReducer {
                     };
                     break;
                 }
-                case TournamentAction.DELETE: {
-                    this.deleteTournament(action.tournamentId);
-                    break;
-                }
                 case TournamentAction.FETCH: {
                     state = {
                         ...state,
@@ -72,6 +69,30 @@ export class TournamentReducer {
                     state = {
                         ...state,
                         isFetching: false,
+                        hasError: true,
+                        errors: action.errors
+                    };
+                    break;
+                }
+                case TournamentAction.DELETE: {
+                    state = {
+                        ...state,
+                        isDeleting: true
+                    };
+                    this.deleteTournament(action.tournamentId);
+                    break;
+                }
+                case TournamentAction.DELETE_SUCCESS: {
+                    state = {
+                        ...state,
+                        isDeleting: false,
+                    };
+                    break;
+                }
+                case TournamentAction.DELETE_FAILURE: {
+                    state = {
+                        ...state,
+                        isDeleting: false,
                         hasError: true,
                         errors: action.errors
                     };
@@ -104,7 +125,9 @@ export class TournamentReducer {
     /**
      * @description delete tournament
      */    
-    deleteTournament(tournament) {
-        this.repository.remove(tournament);
+    deleteTournament(tournamentId) {
+        this.repository.remove(tournamentId)
+            .then(() => store.dispatch(TournamentAction.deleteSuccess()))
+            .catch(errors => store.dispatch(TournamentAction.deleteFailure(errors)));
     }
 }

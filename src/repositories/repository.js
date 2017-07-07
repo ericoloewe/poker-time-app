@@ -50,6 +50,14 @@ export class Repository {
         });
     }
 
+    async remove(uuid) {
+        try {
+            await AsyncStorage.removeItem(this._formatItemHash(uuid), this._logError);
+        } catch (ex) {
+            LOGGER.error("We had some errors to delete data", ex);
+        }
+    }
+
     async _getNextUUID() {
         var nextId = uuidv1();
 
