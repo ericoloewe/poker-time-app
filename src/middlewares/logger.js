@@ -17,7 +17,7 @@ export const logger = store => next => action => {
   let result = next(action);
   
   if (CONFIGS.REDUX.HARD_LOG_ENABLE) {
-    LOGGER.log('next state', store.getState());
+    LOGGER.info('next state', store.getState());
   }
 
   return result;
