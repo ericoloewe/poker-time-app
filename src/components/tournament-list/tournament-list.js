@@ -11,6 +11,7 @@ import { TournamentItem } from "../index";
 import { LB } from '../../configs/index';
 import store from "../../stores/index";
 import { TournamentAction } from "../../actions/index";
+import { NavigationActions } from 'react-navigation'
 
 export class TournamentList extends React.Component {
     constructor(props) {
@@ -51,6 +52,12 @@ export class TournamentList extends React.Component {
         store.dispatch(TournamentAction.fetch());
     }
 
+    editTournament(tournamentId) {
+        NavigationActions.navigate({
+            routeName: 'TournamentRegister'
+        });
+    }
+
     deleteTournament(tournamentId) {
         Alert.alert("Deletar torneio", "Você deseja deletar esse torneio?", [
             {
@@ -81,7 +88,7 @@ export class TournamentList extends React.Component {
                 rendered = <Text>Error here</Text>;
             } else {
                 rendered = this.state.tournaments.map((t, i) => {
-                    return <TournamentItem key={i} tournament={t} onLongPress={(tournamentId) => this.deleteTournament(tournamentId)}/>
+                    return <TournamentItem key={i} tournament={t} onPress={(tournamentId) => this.editTournament(tournamentId)} onLongPress={(tournamentId) => this.deleteTournament(tournamentId)}/>
                 });
             }
         }

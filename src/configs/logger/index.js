@@ -29,16 +29,16 @@ export class Logger {
     _logOfType(type, args) {
         let instanceName = "Logger";
 
-        if (this.actualInstance !== undefined) {
+        if (typeof(this.actualInstance) === "object") {
             instanceName = this.actualInstance.name;
+        } else if (typeof(this.actualInstance) === "string") {
+            instanceName = this.actualInstance;
         }
 
         const defaultLog = [
             `${new Date()}: ${type.toUpperCase()}`,
             `${instanceName}:`
         ];
-
-        console.log(args);
 
         console[type].apply(console, defaultLog.concat(args));
     }

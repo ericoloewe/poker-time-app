@@ -2,7 +2,14 @@
  * Stores
  */
 
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import reducers from "../reducers";
+import { logger, crashReporter } from "../middlewares/index";
 
-export default createStore(reducers);
+export default createStore(
+    reducers,
+    applyMiddleware(
+        logger,
+        crashReporter
+    )
+);

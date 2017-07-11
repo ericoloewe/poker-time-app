@@ -22,7 +22,7 @@ export class TournamentItem extends React.Component {
      */
     render() {
         return (
-            <TouchableHighlight onPress={() => this.props.onPress(this.props.tournament.id)} onLongPress={() => this.props.onLongPress(this.props.tournament.id)}>
+            <TouchableHighlight underlayColor="rgba(255, 255, 255, .5)" onPress={() => this.props.onPress(this.props.tournament.id)} onLongPress={() => this.props.onLongPress(this.props.tournament.id)}>
                 <View>
                     <Card pointerEvents="none">
                         <CardItem header>
