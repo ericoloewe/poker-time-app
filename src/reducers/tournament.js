@@ -12,7 +12,9 @@ export class TournamentReducer {
 
         this._defaultState = {
             tournaments: [],
+            tournament: {},
             isFetching: false,
+            isFinding: false,
             isSaving: false,
             isDeleting: false,
             hasError: false
@@ -74,6 +76,31 @@ export class TournamentReducer {
                     };
                     break;
                 }
+                case TournamentAction.FIND: {
+                    state = {
+                        ...state,
+                        isFinding: true
+                    };
+                    this.findTournaments(action.tournamentId);
+                    break;
+                }
+                case TournamentAction.FIND_SUCCESS: {
+                    state = {
+                        ...state,
+                        isFinding: false,
+                        tournament: action.tournament
+                    };
+                    break;
+                }
+                case TournamentAction.FIND_FAILURE: {
+                    state = {
+                        ...state,
+                        isFinding: false,
+                        hasError: true,
+                        errors: action.errors
+                    };
+                    break;
+                }
                 case TournamentAction.DELETE: {
                     state = {
                         ...state,
@@ -120,6 +147,15 @@ export class TournamentReducer {
         this.repository.list()
             .then(tournaments => store.dispatch(TournamentAction.fetchSuccess(tournaments)))
             .catch(errors => store.dispatch(TournamentAction.fetchFailure(errors)));
+    }
+
+    /**
+     * @description find tournament
+     */    
+    findTournaments(tournamentId) {
+        this.repository.get(tournamentId)
+            .then(tournament => store.dispatch(TournamentAction.findSuccess(tournament)))
+            .catch(errors => store.dispatch(TournamentAction.findFailure(errors)));
     }
 
     /**

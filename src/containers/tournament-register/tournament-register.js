@@ -22,17 +22,55 @@ export class TournamentRegister extends React.Component {
         this.state = {
             name: "",
             buyn: "",
-            date: "18/06/2017"
+            date: ""
         }; 
     }
 
     bindEvents() {
+        this.bindTournamentsUpdateEvent();
+    }
+
+    bindTournamentsUpdateEvent() {
+        this.unsubscribe = store.subscribe(() => {
+            let {tournament} = store.getState().tournament;
+
+            this.setState(tournament);
+        });
+    }
+
+    componentWillMount() {
+        this.bindEvents();
+        this.dispachEvents();
+    }
+
+    componentWillUnmount() {
+        if (typeof(this.unsubscribe) === "function") {
+            this.unsubscribe();
+        }
+    }
+
+    dispachEvents() {
+        const {state} = this.props.navigation;
+
+        if (!!state && !!state.params && !!state.params.tournamentId) {
+            store.dispatch(TournamentAction.find(state.params.tournamentId));
+        }
     }
     
     /**
      * @description render the template
      */
     render() {
+        let renderedForm = <Text>Is finding</Text>;
+        
+        if (!this.state.isFinding) {
+            if (this.state.hasError) {
+                renderedForm = <Text>Error here</Text>;
+            } else {
+                renderedForm = this.renderForm();
+            }
+        }
+
         return TemplateBuilder.extend(
             <Content>
                 <Header>
@@ -40,7 +78,13 @@ export class TournamentRegister extends React.Component {
                         <Title>{LB.build("CONTAINERS.TOURNAMENT_REGISTER.TITLE")}</Title>
                     </Body>
                 </Header>
-                <Form>
+                {renderedForm}
+            </Content>
+        );
+    }
+
+    renderForm() {
+        return <Form>
                     <Item stackedLabel>
                         <Label>{LB.build("CONTAINERS.TOURNAMENT_REGISTER.FORM.NAME")}</Label>
                         <Input value={this.state.name} onChangeText={(name) => this.setState({name})}/>
@@ -56,13 +100,12 @@ export class TournamentRegister extends React.Component {
                     <Button block style={styles.button} onPress={() => {this.submit()}}> 
                         <Text>{LB.build("CONTAINERS.TOURNAMENT_REGISTER.FORM.BUTTON")}</Text>
                     </Button>
-                </Form>
-            </Content>
-        );
+                </Form>;
     }
 
     submit() {
         store.dispatch(TournamentAction.save({
+            id: this.state.id,
             name: this.state.name,
             buyn: this.state.buyn,
             date: this.state.date

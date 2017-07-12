@@ -11,6 +11,9 @@ export class TournamentAction {
     static FETCH = "FETCH";
     static FETCH_SUCCESS = "FETCH_SUCCESS";
     static FETCH_FAILURE = "FETCH_FAILURE";
+    static FIND = "FIND";
+    static FIND_SUCCESS = "FIND_SUCCESS";
+    static FIND_FAILURE = "FIND_FAILURE";
 
     /**
      * @description generate
@@ -25,7 +28,10 @@ export class TournamentAction {
             deleteFailure: TournamentAction.deleteFailure,
             fetch: TournamentAction.fetch,
             fetchSuccess: TournamentAction.fetchSuccess,
-            fetchFailure: TournamentAction.fetchFailure
+            fetchFailure: TournamentAction.fetchFailure,
+            find: TournamentAction.find,
+            findSuccess: TournamentAction.findSuccess,
+            findFailure: TournamentAction.findFailure
         };
     }
 
@@ -113,6 +119,36 @@ export class TournamentAction {
     static fetchFailure(errors) {
         return {
             type: TournamentAction.FETCH_FAILURE,
+            errors
+        };
+    }
+
+    /**
+     * @description find
+     */
+    static find(tournamentId) {
+        return {
+            type: TournamentAction.FIND,
+            tournamentId
+        };
+    }
+
+    /**
+     * @description find success
+     */
+    static findSuccess(tournament) {
+        return {
+            type: TournamentAction.FIND_SUCCESS,
+            tournament
+        };
+    }
+
+    /**
+     * @description find failure
+     */
+    static findFailure(errors) {
+        return {
+            type: TournamentAction.DELETE_FAILURE,
             errors
         };
     }
