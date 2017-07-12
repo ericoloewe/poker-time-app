@@ -15,7 +15,6 @@ export class TournamentRegister extends React.Component {
     constructor() {
         super();
         this.resetState();
-        this.bindEvents();
     }
 
     resetState() {
