@@ -19,9 +19,11 @@ export class TournamentRegister extends React.Component {
 
     resetState() {
         this.state = {
-            name: "",
-            buyn: "",
-            date: ""
+            tournament: {
+                name: "",
+                buyn: "",
+                date: ""
+            }
         }; 
     }
 
@@ -31,10 +33,28 @@ export class TournamentRegister extends React.Component {
 
     bindTournamentsUpdateEvent() {
         this.unsubscribe = store.subscribe(() => {
-            let {tournament} = store.getState().tournament;
-
-            this.setState(tournament);
+            this.setState(store.getState().tournament);
         });
+    }
+
+    buildFormComponent() {
+        return <Form>
+                    <Item stackedLabel>
+                        <Label>{LB.build("CONTAINERS.TOURNAMENT_REGISTER.FORM.NAME")}</Label>
+                        <Input value={this.state.tournament.name} onChangeText={(name) => this.setModelProp({name})}/>
+                    </Item>
+                    <Item stackedLabel>
+                        <Label>{LB.build("CONTAINERS.TOURNAMENT_REGISTER.FORM.BUYN")}</Label>
+                        <Input value={this.state.tournament.buyn} onChangeText={(buyn) => this.setModelProp({buyn})}/>
+                    </Item>
+                    <Item stackedLabel last>
+                        <Label>{LB.build("CONTAINERS.TOURNAMENT_REGISTER.FORM.DATE")}</Label>
+                        <Input value={this.state.tournament.date} onChangeText={(date) => this.setModelProp({date})}/>
+                    </Item>
+                    <Button block style={styles.button} onPress={() => {this.submit()}}> 
+                        <Text>{LB.build("CONTAINERS.TOURNAMENT_REGISTER.FORM.BUTTON")}</Text>
+                    </Button>
+                </Form>;
     }
 
     componentWillMount() {
@@ -60,16 +80,6 @@ export class TournamentRegister extends React.Component {
      * @description render the template
      */
     render() {
-        let renderedForm = <Text>Is finding</Text>;
-        
-        if (!this.state.isFinding) {
-            if (this.state.hasError) {
-                renderedForm = <Text>Error here</Text>;
-            } else {
-                renderedForm = this.renderForm();
-            }
-        }
-
         return TemplateBuilder.extend(
             <Content>
                 <Header>
@@ -77,39 +87,36 @@ export class TournamentRegister extends React.Component {
                         <Title>{LB.build("CONTAINERS.TOURNAMENT_REGISTER.TITLE")}</Title>
                     </Body>
                 </Header>
-                {renderedForm}
+                {this.renderForm()}
             </Content>
         );
     }
 
     renderForm() {
-        return <Form>
-                    <Item stackedLabel>
-                        <Label>{LB.build("CONTAINERS.TOURNAMENT_REGISTER.FORM.NAME")}</Label>
-                        <Input value={this.state.name} onChangeText={(name) => this.setState({name})}/>
-                    </Item>
-                    <Item stackedLabel>
-                        <Label>{LB.build("CONTAINERS.TOURNAMENT_REGISTER.FORM.BUYN")}</Label>
-                        <Input value={this.state.buyn} onChangeText={(buyn) => this.setState({buyn})}/>
-                    </Item>
-                    <Item stackedLabel last>
-                        <Label>{LB.build("CONTAINERS.TOURNAMENT_REGISTER.FORM.DATE")}</Label>
-                        <Input value={this.state.date} onChangeText={(date) => this.setState({date})}/>
-                    </Item>
-                    <Button block style={styles.button} onPress={() => {this.submit()}}> 
-                        <Text>{LB.build("CONTAINERS.TOURNAMENT_REGISTER.FORM.BUTTON")}</Text>
-                    </Button>
-                </Form>;
+        let renderedForm = <Text>Is finding</Text>;
+        
+        if (!this.state.isFinding) {
+            if (this.state.hasError) {
+                renderedForm = <Text>Error here</Text>;
+            } else {
+                renderedForm = this.buildFormComponent();
+            }
+        }
+
+        return renderedForm;
+    }
+
+    setModelProp(model) {
+        this.setState({
+            tournament: {
+                ...this.state.tournament,
+                ...model
+            }
+        })
     }
 
     submit() {
-        store.dispatch(TournamentAction.save({
-            id: this.state.id,
-            name: this.state.name,
-            buyn: this.state.buyn,
-            date: this.state.date
-        }));
-
+        store.dispatch(TournamentAction.save(this.state.tournament));
         this.props.navigation.goBack();
     }
 }
