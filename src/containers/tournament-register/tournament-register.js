@@ -8,7 +8,8 @@ import { TemplateBuilder } from '../../styles/index';
 import { TournamentAction } from '../../actions/index';
 import { LB } from '../../configs/index';
 import store from "../../stores/index";
-import { Button, Content, Form, Label, Input, Item, Header, Body, Title, Text, Icon } from 'native-base';
+import { Switch } from "react-native";
+import { Button, Content, Form, Label, Input, Item, Header, Body, Title, Text, Icon, Spinner } from 'native-base';
 
 export class TournamentRegister extends React.Component {
 
@@ -22,6 +23,7 @@ export class TournamentRegister extends React.Component {
             tournament: {
                 name: "",
                 buyn: "",
+                online: false,
                 date: ""
             }
         }; 
@@ -46,6 +48,10 @@ export class TournamentRegister extends React.Component {
                     <Item stackedLabel>
                         <Label>{LB.build("CONTAINERS.TOURNAMENT_REGISTER.FORM.BUYN")}</Label>
                         <Input value={this.state.tournament.buyn} onChangeText={(buyn) => this.setModelProp({buyn})}/>
+                    </Item>
+                    <Item stackedLabel>
+                        <Label>{LB.build("CONTAINERS.TOURNAMENT_REGISTER.FORM.ONLINE")}</Label>
+                        <Switch value={this.state.tournament.online} onValueChange={(online) => this.setModelProp({online})}/>
                     </Item>
                     <Item stackedLabel last>
                         <Label>{LB.build("CONTAINERS.TOURNAMENT_REGISTER.FORM.DATE")}</Label>
@@ -93,7 +99,7 @@ export class TournamentRegister extends React.Component {
     }
 
     renderForm() {
-        let renderedForm = <Text>Is finding</Text>;
+        let renderedForm = <Spinner />;
         
         if (!this.state.isFinding) {
             if (this.state.hasError) {
@@ -109,7 +115,7 @@ export class TournamentRegister extends React.Component {
     setModelProp(model) {
         this.setState({
             tournament: {
-                ...this.state.tournament,
+                ...(this.state.tournament),
                 ...model
             }
         })
