@@ -14,12 +14,18 @@ const LOGGER = new Logger(Repository);
 export class Repository {
     async save(item) {
         try {
-            item.id = await this._getNextUUID();
+            if (typeof (item.id) !== "string") {
+                item.id = await this._getNextUUID();
 
-            await AsyncStorage.setItem(this._formatItemHash(item.id), JSON.stringify(item), this._logError);
+                await AsyncStorage.setItem(this._formatItemHash(item.id), JSON.stringify(item), this._logError);
+            } else {
+                await AsyncStorage.mergeItem(this._formatItemHash(item.id), JSON.stringify(item), this._logError);
+            }
         } catch (ex) {
             LOGGER.error("We had some errors to save data", ex);
         }
+
+        return item.id || null;
     }
 
     async get(uuid) {
