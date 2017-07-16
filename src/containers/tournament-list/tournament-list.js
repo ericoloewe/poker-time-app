@@ -8,7 +8,7 @@ import { styles } from "./tournament-list.styles";
 import { TemplateBuilder } from '../../styles/index';
 import { Content, Header, Body, Text, Title, Spinner } from 'native-base';
 import { LB } from '../../configs/index';
-import { TournamentListComponent } from '../../components/index';
+import { TournamentListComponent, ContainerErrorComponent } from '../../components/index';
 import store from "../../stores/index";
 import { TournamentAction } from "../../actions/index";
 
@@ -21,7 +21,9 @@ export class TournamentList extends React.Component {
 
     resetState() {
         this.state = {
-            tournaments: []
+            tournaments: [],
+            isFetching: true,
+            hasError: false
         }; 
     }
 
@@ -62,8 +64,8 @@ export class TournamentList extends React.Component {
         ]);
     }
 
-    editTournament(tournamentId) {
-        this.props.navigation.navigate('TournamentRegister', {tournamentId});
+    goToTournamentDetail(tournamentId) {
+        this.props.navigation.navigate('TournamentDetail', {tournamentId});
     }
     
     /**
@@ -74,9 +76,9 @@ export class TournamentList extends React.Component {
         
         if (!this.state.isFetching) {
             if (this.state.hasError) {
-                renderedList = <Text>Error here</Text>;
+                renderedList = <ContainerErrorComponent />;
             } else {
-                renderedList = <TournamentListComponent tournaments={this.state.tournaments} onItemPress={(tournamentId) => this.editTournament(tournamentId)} onItemLongPress={(tournamentId) => this.deleteTournament(tournamentId)}/>
+                renderedList = <TournamentListComponent tournaments={this.state.tournaments} onItemPress={(tournamentId) => this.goToTournamentDetail(tournamentId)} onItemLongPress={(tournamentId) => this.deleteTournament(tournamentId)}/>
             }
         }
 

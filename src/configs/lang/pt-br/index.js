@@ -8,7 +8,8 @@ import {
     TRY_LUCK,
     TOURNAMENT,
     TOURNAMENT_REGISTER,
-    TOURNAMENT_LIST
+    TOURNAMENT_LIST,
+    TOURNAMENT_DETAIL
 } from "./containers/index";
 
 const CONTAINERS = {
@@ -21,7 +22,8 @@ const CONTAINERS = {
     TRY_LUCK,
     TOURNAMENT,
     TOURNAMENT_REGISTER,
-    TOURNAMENT_LIST
+    TOURNAMENT_LIST,
+    TOURNAMENT_DETAIL
 };
 
 export {

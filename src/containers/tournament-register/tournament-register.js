@@ -103,7 +103,7 @@ export class TournamentRegister extends React.Component {
         
         if (!this.state.isFinding) {
             if (this.state.hasError) {
-                renderedForm = <Text>Error here</Text>;
+                renderedForm = <ContainerErrorComponent />;
             } else {
                 renderedForm = this.buildFormComponent();
             }

@@ -1,0 +1,11 @@
+{
+    "TITLE": "Detalhes do torneio",
+    "TOURNAMENT": {
+        "NAME": "Nome",
+        "BUYN": "Buyn",
+        "ONLINE": "Online",
+        "DATE": "Data"
+    },
+    "DELETE_BUTTON": "Deletar",
+    "EDIT_BUTTON": "Editar"
+}
