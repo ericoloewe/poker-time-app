@@ -33,6 +33,10 @@ export class Home extends React.Component {
                     <Icon name='pulse' />
                     <Text>{LB.build("CONTAINERS.HOME.BANKHALL")}</Text>
                 </Button>
+                <Button large iconLeft block onPress={() => {this.props.navigation.navigate('Tournament')}}>
+                    <Icon name='flame' />
+                    <Text>{LB.build("CONTAINERS.HOME.TOURNAMENTS")}</Text>
+                </Button>
             </Content>
         );
     }

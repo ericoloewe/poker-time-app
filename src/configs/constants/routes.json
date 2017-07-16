@@ -22,5 +22,21 @@
     {
         "key": "bankhall-balance",
         "component": "BankhallBalance"
-    }   
+    },
+    {
+        "key": "tournament",
+        "component": "Tournament"
+    },
+    {
+        "key": "tournament-register",
+        "component": "TournamentRegister"
+    },
+    {
+        "key": "tournament-list",
+        "component": "TournamentList"
+    },
+    {
+        "key": "tournament-detail",
+        "component": "TournamentDetail"
+    }
 ]

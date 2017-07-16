@@ -1,4 +1,24 @@
-import { ABOUT, BANKHALL, BANKHALL_BALANCE, BANKHALL_REGISTER, HOME, SETTINGS, TRY_LUCK } from "./containers/index";
+import {
+    ABOUT,
+    BANKHALL,
+    BANKHALL_BALANCE,
+    BANKHALL_REGISTER,
+    HOME,
+    SETTINGS,
+    TRY_LUCK,
+    TOURNAMENT,
+    TOURNAMENT_REGISTER,
+    TOURNAMENT_LIST,
+    TOURNAMENT_DETAIL
+} from "./containers/index";
+
+import {
+    TOURNAMENT_DETAIL as COMPONENT_TOURNAMENT_DETAIL
+} from "./components/index";
+
+import {
+    VALUES as GENERAL_VALUES
+} from "./general/index";
 
 const CONTAINERS = {
     ABOUT,
@@ -6,10 +26,24 @@ const CONTAINERS = {
     BANKHALL_BALANCE,
     BANKHALL_REGISTER,
     HOME,
+    SETTINGS,
     TRY_LUCK,
-    SETTINGS
+    TOURNAMENT,
+    TOURNAMENT_REGISTER,
+    TOURNAMENT_LIST,
+    TOURNAMENT_DETAIL
+};
+
+const COMPONENTS = {
+    TOURNAMENT_DETAIL: COMPONENT_TOURNAMENT_DETAIL
+};
+
+const GENERAL = {
+    VALUES: GENERAL_VALUES
 };
 
 export {
-    CONTAINERS
+    CONTAINERS,
+    COMPONENTS,
+    GENERAL
 }

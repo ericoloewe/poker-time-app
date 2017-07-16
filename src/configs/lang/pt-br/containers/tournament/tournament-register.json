@@ -1,0 +1,10 @@
+{
+    "TITLE": "Cadastro de torneio",
+    "FORM": {
+        "NAME": "Nome",
+        "BUYN": "Buyn",
+        "ONLINE": "Online",
+        "DATE": "Data",
+        "BUTTON": "Salvar"
+    }
+}
