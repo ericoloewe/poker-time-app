@@ -49,7 +49,7 @@ export class TournamentList extends React.Component {
     }
 
     dispachEvents() {
-        store.dispatch(TournamentAction.fetch());
+        this.fetchList();
     }
 
     deleteTournament(tournamentId) {
@@ -62,6 +62,10 @@ export class TournamentList extends React.Component {
                 text: "NÃO"
             }
         ]);
+    }
+
+    fetchList() {
+        store.dispatch(TournamentAction.fetch());
     }
 
     goToTournamentDetail(tournamentId) {
@@ -78,7 +82,7 @@ export class TournamentList extends React.Component {
             if (this.state.hasError) {
                 renderedList = <ContainerErrorComponent />;
             } else {
-                renderedList = <TournamentListComponent tournaments={this.state.tournaments} onItemPress={(tournamentId) => this.goToTournamentDetail(tournamentId)} onItemLongPress={(tournamentId) => this.deleteTournament(tournamentId)}/>
+                renderedList = <TournamentListComponent tournaments={this.state.tournaments} onItemPress={(tournamentId) => this.goToTournamentDetail(tournamentId)} onItemLongPress={(tournamentId) => this.deleteTournament(tournamentId)} onRefresh={() => this.onListRefresh()} />
             }
         }
 
@@ -92,6 +96,10 @@ export class TournamentList extends React.Component {
                 {renderedList}
             </Content>
         );
+    }
+
+    onListRefresh() {
+        this.fetchList();
     }
 }
 
