@@ -36,7 +36,7 @@ export class TournamentDetail extends React.Component {
                     {LB.build("COMPONENTS.TOURNAMENT_DETAIL.ONLINE")}:
                 </Text>
                 <Text style={styles.value}>
-                    {this.props.tournament.online} 
+                    {this.props.tournament.online ? LB.build("GENERAL.VALUES.YES") : LB.build("GENERAL.VALUES.NO")}
                 </Text>
                 <Text style={styles.title}>
                     {LB.build("COMPONENTS.TOURNAMENT_DETAIL.DATE")}:

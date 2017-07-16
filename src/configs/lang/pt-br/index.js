@@ -16,6 +16,10 @@ import {
     TOURNAMENT_DETAIL as COMPONENT_TOURNAMENT_DETAIL
 } from "./components/index";
 
+import {
+    VALUES as GENERAL_VALUES
+} from "./general/index";
+
 const CONTAINERS = {
     ABOUT,
     BANKHALL,
@@ -34,7 +38,12 @@ const COMPONENTS = {
     TOURNAMENT_DETAIL: COMPONENT_TOURNAMENT_DETAIL
 };
 
+const GENERAL = {
+    VALUES: GENERAL_VALUES
+};
+
 export {
     CONTAINERS,
-    COMPONENTS
+    COMPONENTS,
+    GENERAL
 }
