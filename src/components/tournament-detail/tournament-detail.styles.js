@@ -1,16 +1,14 @@
 const styles = {
-    underlayColor: "rgba(255, 255, 255, .5)",
-    cardItemHeader_text: {
-        fontSize: 20,
-        fontWeight: 'bold',
+    title: {
+        paddingTop: 5,
+        paddingBottom: 2,
+        fontWeight: "bold",
+        fontSize: 20
     },
-    cardItem_view: {
-        flex: 1, 
-        flexDirection: 'row'
-    },
-    cardItem_view_text: {
-        flex: 1,
-        alignSelf: 'flex-end'
+    value: { 
+        paddingTop: 2,
+        paddingBottom: 2,
+        fontSize: 18
     }
 };
 

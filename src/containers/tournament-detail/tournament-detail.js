@@ -62,13 +62,13 @@ export class TournamentDetail extends React.Component {
     }
 
     deleteTournament(tournamentId) {
-        Alert.alert("Deletar torneio", "Você deseja deletar esse torneio?", [
+        Alert.alert(LB.build("CONTAINERS.TOURNAMENT_LIST.DELETE.TITLE"), LB.build("CONTAINERS.TOURNAMENT_LIST.DELETE.SUB_TITLE"), [
             {
-                text: "SIM",
+                text: LB.build("CONTAINERS.TOURNAMENT_LIST.DELETE.YES"),
                 onPress: () => store.dispatch(TournamentAction.delete(tournamentId))
             },
             {
-                text: "NÃO"
+                text: LB.build("CONTAINERS.TOURNAMENT_LIST.DELETE.NO")
             }
         ]);
     }

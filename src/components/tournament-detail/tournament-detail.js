@@ -20,17 +20,29 @@ export class TournamentDetail extends React.Component {
     render() {
         return (
             <View>
-                <Text>
-                    Nome: {this.props.tournament.name} 
+                <Text style={styles.title}>
+                    {LB.build("COMPONENTS.TOURNAMENT_DETAIL.NAME")}: 
                 </Text>
-                <Text>
-                    Buyn: R$ {this.props.tournament.buyn} 
+                <Text style={styles.value}>
+                    {this.props.tournament.name} 
                 </Text>
-                <Text>
-                    Online: {this.props.tournament.online} 
+                <Text style={styles.title}>
+                    {LB.build("COMPONENTS.TOURNAMENT_DETAIL.BUYN")}:
                 </Text>
-                <Text>
-                    Data: {this.props.tournament.date}
+                <Text style={styles.value}>
+                    R$ {this.props.tournament.buyn} 
+                </Text>
+                <Text style={styles.title}>
+                    {LB.build("COMPONENTS.TOURNAMENT_DETAIL.ONLINE")}:
+                </Text>
+                <Text style={styles.value}>
+                    {this.props.tournament.online} 
+                </Text>
+                <Text style={styles.title}>
+                    {LB.build("COMPONENTS.TOURNAMENT_DETAIL.DATE")}:
+                </Text>
+                <Text style={styles.value}>
+                    {this.props.tournament.date}
                 </Text>
             </View>
         );

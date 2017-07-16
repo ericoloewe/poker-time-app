@@ -12,6 +12,10 @@ import {
     TOURNAMENT_DETAIL
 } from "./containers/index";
 
+import {
+    TOURNAMENT_DETAIL as COMPONENT_TOURNAMENT_DETAIL
+} from "./components/index";
+
 const CONTAINERS = {
     ABOUT,
     BANKHALL,
@@ -26,6 +30,11 @@ const CONTAINERS = {
     TOURNAMENT_DETAIL
 };
 
+const COMPONENTS = {
+    TOURNAMENT_DETAIL: COMPONENT_TOURNAMENT_DETAIL
+};
+
 export {
-    CONTAINERS
+    CONTAINERS,
+    COMPONENTS
 }

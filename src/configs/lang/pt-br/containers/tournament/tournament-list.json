@@ -1,3 +1,9 @@
 {
-    "TITLE": "Torneios"
+    "TITLE": "Torneios",
+    "DELETE": {
+        "TITLE": "Deletar torneio",
+        "SUB_TITLE": "Você deseja deletar esse torneio?",
+        "YES": "SIM",
+        "NO": "NÃO"
+    }
 }
