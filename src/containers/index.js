@@ -13,5 +13,4 @@ export { BankhallBalance } from "./bankhall-balance/bankhall-balance";
 export { BankhallRegister } from "./bankhall-register/bankhall-register";
 export { Tournament } from "./tournament/tournament";
 export { TournamentRegister } from "./tournament-register/tournament-register";
-export { TournamentList } from "./tournament-list/tournament-list";
 export { TournamentDetail } from "./tournament-detail/tournament-detail";
