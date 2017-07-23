@@ -1,8 +1,11 @@
 const styles = ({
-    container__header__body__title: {
-        fontWeight: "900",
-        alignSelf: "center"
+    content_buttons: {
+        flex: 1,
+        alignSelf: "center",
+        flexDirection: "column"
     }
 });
 
-export { styles };
+export {
+    styles
+};
