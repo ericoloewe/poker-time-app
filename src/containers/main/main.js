@@ -9,32 +9,16 @@ export class Main {
     /**
      * @description render the template
      */
-    render(content, options) {
+    render(content, options = {}) {
         return (
             <StyleProvider style={TemplateBuilder.getActualTheme()}>
                 <Container>
+                    { options.before }
                     { content }
-                    { this.renderButton((options || {}).button) }
+                    { options.after }
                 </Container>
             </StyleProvider>
         );
-    }
-
-    /**
-     * @description render the button
-     */
-    renderButton(options) {
-        let button = null;
-
-        if (!!options) {
-            button = <View style={styles.button_container}> 
-                        <Button style={styles.button_own} onPress={() => options.onPress()}>
-                            <Text style={styles.button_text}>+</Text>
-                        </Button>
-                    </View> 
-        }
-
-        return button;
     }
 }
 

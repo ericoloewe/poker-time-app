@@ -8,7 +8,7 @@ import { styles } from "./tournament.styles";
 import { TemplateBuilder } from '../../styles/index';
 import { Content, Header, Body, Button, Text, Title, Spinner, Icon, Footer } from 'native-base';
 import { LB } from '../../configs/index';
-import { TournamentListComponent, ContainerErrorComponent } from '../../components/index';
+import { TournamentListComponent, RoundButton, ContainerErrorComponent } from '../../components/index';
 import store from "../../stores/index";
 import { TournamentAction } from "../../actions/index";
 
@@ -99,11 +99,7 @@ export class Tournament extends React.Component {
                 </Header>
                 {renderedList}                
             </Content>
-        , { 
-            button: {
-                onPress: () => this.goToTournamentRegister()
-            }
-        });
+        , { after: <RoundButton onPress={() => this.goToTournamentRegister()}>+</RoundButton> });
     }
 
     onListRefresh() {

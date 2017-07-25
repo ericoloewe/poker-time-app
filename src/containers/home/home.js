@@ -21,11 +21,25 @@ export class Home extends React.Component {
      */
     render() {
         return TemplateBuilder.extend(
-            <Content>
+            <Content style={{
+                backgroundColor: "#005f18"
+            }}>
                 <View style={styles.content_buttons}>
-                    <Button large iconLeft onPress={() => this.goToTryLuck()}> 
-                        <Icon name='baseball' />
-                        <Text>{LB.build("CONTAINERS.HOME.TRY_LUCK")}</Text>
+                    <Button large iconLeft onPress={() => this.goToTryLuck()} style={{
+                            backgroundColor: "#f6f8f7",
+                            borderWidth: 5,
+                            borderColor: "#FFF",
+                            borderRadius: 20,
+                            elevation: 20,
+                            marginTop: 20,
+                            marginBottom: 20,
+                        }}> 
+                        <Icon name='baseball' style={{
+                            color: "#0d4909"
+                        }} />
+                        <Text style={{
+                            color: "#0d4909"
+                        }}>{LB.build("CONTAINERS.HOME.TRY_LUCK")}</Text>
                     </Button>
                     <Button large iconLeft>
                         <Icon name='calculator' />
