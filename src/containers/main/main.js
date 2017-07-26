@@ -12,7 +12,9 @@ export class Main {
     render(content, options = {}) {
         return (
             <StyleProvider style={TemplateBuilder.getActualTheme()}>
-                <Container>
+                <Container style={{
+                        backgroundColor: "#005f18"
+                    }}>
                     { options.before }
                     { content }
                     { options.after }

@@ -3,6 +3,7 @@
  */
 
 import * as React from "react";
+import { View } from 'react-native';
 import { styles } from "./settings.styles";
 import { LB } from '../../configs/index';
 import { TemplateBuilder } from '../../styles/index';
@@ -21,10 +22,12 @@ export class Settings extends React.Component {
     render() {
         return TemplateBuilder.extend(
             <Content>
-                <Button large iconLeft block onPress={() => {this.props.navigation.navigate('About')}}> 
-                    <Icon name='book' />
-                    <Text>{LB.build("CONTAINERS.SETTINGS.ABOUT")}</Text>
-                </Button>
+                <View style={styles.content_buttons}>
+                    <Button dark bordered large iconLeft style={styles.content_buttons_button} onPress={() => {this.props.navigation.navigate('About')}}> 
+                        <Icon name='book' />
+                        <Text>{LB.build("CONTAINERS.SETTINGS.ABOUT")}</Text>
+                    </Button>
+                </View>
             </Content>
         );
     }

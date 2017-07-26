@@ -21,37 +21,23 @@ export class Home extends React.Component {
      */
     render() {
         return TemplateBuilder.extend(
-            <Content style={{
-                backgroundColor: "#005f18"
-            }}>
+            <Content>
                 <View style={styles.content_buttons}>
-                    <Button large iconLeft onPress={() => this.goToTryLuck()} style={{
-                            backgroundColor: "#f6f8f7",
-                            borderWidth: 5,
-                            borderColor: "#FFF",
-                            borderRadius: 20,
-                            elevation: 20,
-                            marginTop: 20,
-                            marginBottom: 20,
-                        }}> 
-                        <Icon name='baseball' style={{
-                            color: "#0d4909"
-                        }} />
-                        <Text style={{
-                            color: "#0d4909"
-                        }}>{LB.build("CONTAINERS.HOME.TRY_LUCK")}</Text>
+                    <Button dark bordered large iconLeft style={styles.content_buttons_button} onPress={() => this.goToTryLuck()}> 
+                        <Icon name='baseball' />
+                        <Text style={styles.content_buttons_button_text}>{LB.build("CONTAINERS.HOME.TRY_LUCK")}</Text>
                     </Button>
-                    <Button large iconLeft>
+                    <Button dark bordered large iconLeft style={styles.content_buttons_button}>
                         <Icon name='calculator' />
-                        <Text>{LB.build("CONTAINERS.HOME.CALC")}</Text>
+                        <Text style={styles.content_buttons_button_text}>{LB.build("CONTAINERS.HOME.CALC")}</Text>
                     </Button>
-                    <Button large iconLeft onPress={() => this.goToBankhall()}>
+                    <Button dark bordered large iconLeft style={styles.content_buttons_button} onPress={() => this.goToBankhall()}>
                         <Icon name='pulse' />
-                        <Text>{LB.build("CONTAINERS.HOME.BANKHALL")}</Text>
+                        <Text style={styles.content_buttons_button_text}>{LB.build("CONTAINERS.HOME.BANKHALL")}</Text>
                     </Button>
-                    <Button large iconLeft onPress={() => this.goToTournament()}>
+                    <Button dark bordered large iconLeft style={styles.content_buttons_button} onPress={() => this.goToTournament()}>
                         <Icon name='flame' />
-                        <Text>{LB.build("CONTAINERS.HOME.TOURNAMENTS")}</Text>
+                        <Text style={styles.content_buttons_button_text}>{LB.build("CONTAINERS.HOME.TOURNAMENTS")}</Text>
                     </Button>
                 </View>
             </Content>
