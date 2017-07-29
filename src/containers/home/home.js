@@ -3,7 +3,7 @@
  */
 
 import * as React from "react";
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import { styles } from "./home.styles";
 import { LB } from '../../configs/index';
 import { TemplateBuilder } from '../../styles/index';
@@ -22,6 +22,9 @@ export class Home extends React.Component {
     render() {
         return TemplateBuilder.extend(
             <Content>
+                <View style={styles.content_cards}>
+                    <Image source={require("../../medias/images/cards.png")} style={styles.content_cards_image} />
+                </View>
                 <View style={styles.content_buttons}>
                     <Button dark bordered large iconLeft style={styles.content_buttons_button} onPress={() => this.goToTryLuck()}> 
                         <Icon name='baseball' />
