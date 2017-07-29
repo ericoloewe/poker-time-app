@@ -3,6 +3,7 @@
  */
 
 export { Card } from "./card/card";
+export { CardList } from "./card-list/card-list";
 export { ContainerError as ContainerErrorComponent } from "./container-error/container-error";
 export { PokerCoinButton } from "./poker-coin-button/poker-coin-button";
 export { RoundButton } from "./round-button/round-button";

@@ -1,13 +1,14 @@
 const styles = ({
 	card: {
-        flex: 1,
-        flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',
 		width: 124,
 		height: 176,
 		backgroundColor: 'white',
-		borderRadius: 6
+		borderWidth: 1,
+		borderColor: "rgba(200, 200, 200, .5)",
+		borderRadius: 6,
+		elevation: 4
 	},
 	leftTop: {
 		width: 20,

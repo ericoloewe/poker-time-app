@@ -8,7 +8,7 @@ import { styles } from "./try-luck.styles";
 import { LB } from '../../configs/index';
 import { TemplateBuilder } from '../../styles/index';
 import { TryLuckAction } from "../../actions/index";
-import { Card, PokerCoinButton } from "../../components/index";
+import { CardList, PokerCoinButton } from "../../components/index";
 import store from "../../stores/index";
 import { Body, Button, Content, Text, Row, Col } from 'native-base';
 
@@ -22,7 +22,8 @@ export class TryLuck extends React.Component {
 
     resetState() {
         this.state = {
-            luck: {}
+            firstLuckList: [],
+            secondLuckList: []
         };
     }
 
@@ -32,7 +33,18 @@ export class TryLuck extends React.Component {
 
     bindLuckUpdateEvent() { 
         store.subscribe(() => {
-            this.setState(store.getState().tryLuck);
+            let { firstLuckList, secondLuckList } = this.state;
+
+            if (firstLuckList.length > secondLuckList.length) {
+                secondLuckList.unshift(store.getState().tryLuck.luck);
+            } else {
+                firstLuckList.unshift(store.getState().tryLuck.luck);
+            }
+
+            this.setState({
+                firstLuckList,
+                secondLuckList
+            });
         });
     }
     
@@ -40,14 +52,18 @@ export class TryLuck extends React.Component {
      * @description render the template
      */
     render() {
+        let { firstLuckList, secondLuckList } = this.state;
+
+        console.log(this.state);
+
         return TemplateBuilder.extend(
             <Content style={styles.content}>
                 <Row>
                     <Col style={styles.cardsCol}>
-                        <Card type={this.state.luck.nipe} order={this.state.luck.card}/> 
+                        <CardList first={firstLuckList[0]} second={firstLuckList[1]} third={firstLuckList[2]}/>
                     </Col>
                     <Col style={styles.cardsCol}>
-                        <Card type={this.state.luck.nipe} order={this.state.luck.card}/> 
+                        <CardList first={secondLuckList[0]} second={secondLuckList[1]} third={secondLuckList[2]}/>
                     </Col>
                 </Row>
                 <Row style={styles.buttonRow}>
@@ -64,6 +80,7 @@ export class TryLuck extends React.Component {
     }
 
     tryNextLuck() {
+        store.dispatch({ type: TryLuckAction.TRY_LUCK });
         store.dispatch({ type: TryLuckAction.TRY_LUCK });
     }
 }
