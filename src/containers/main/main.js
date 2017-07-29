@@ -1,23 +1,25 @@
 import * as React from "react";
-import { View } from 'react-native';
+import { View, Image, Dimensions } from 'react-native';
 import { styles } from "./main.styles";
 import { TemplateBuilder } from "../../styles/index";
 import { Container, StyleProvider, Button, Text } from 'native-base';
+import LinearGradient from 'react-native-linear-gradient';
 
-export class Main {
+export class Main { 
     
     /**
      * @description render the template
      */
     render(content, options = {}) {
+        let {width, height} = Dimensions.get("window");
         return (
             <StyleProvider style={TemplateBuilder.getActualTheme()}>
-                <Container style={{
-                        backgroundColor: "#005f18"
-                    }}>
-                    { options.before }
-                    { content }
-                    { options.after }
+                <Container style={styles.container}>
+                    <Image source={require("../../medias/images/background.png")} style={styles.container_backgroundImage}>
+                        { options.before }
+                        { content }
+                        { options.after }
+                    </Image>
                 </Container>
             </StyleProvider>
         );
