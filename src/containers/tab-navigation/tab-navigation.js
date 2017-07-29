@@ -16,15 +16,15 @@ const MainTab = TabNavigator({
     tabBarComponent: TabBarBottom,
     tabBarPosition: 'bottom',
     tabBarOptions: {
-      inactiveTintColor: "#582d00",
-      activeTintColor: "#3F1400",
+      inactiveTintColor: "#656c66",
+      activeTintColor: "#FFF",
       labelStyle: {
-        color: "#582d00"
+        color: "#656c66"
       },
       style: {
-        borderTopColor: "#582d00",
-        borderTopWidth: 5,
-        backgroundColor: "#dbceaf"
+        borderTopColor: "#656c66",
+        borderTopWidth: 3,
+        backgroundColor: "#000"
       }
     }
 });
