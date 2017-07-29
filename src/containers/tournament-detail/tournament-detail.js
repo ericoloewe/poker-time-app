@@ -113,7 +113,7 @@ export class TournamentDetail extends React.Component {
             if (this.state.hasError) {
                 renderedDetail = <ContainerErrorComponent />;
             } else {
-                renderedDetail = <TournamentDetailComponent tournament={this.state.tournament} />;
+                renderedDetail = <TournamentDetailComponent tournament={this.state.tournament} style={styles.details} />;
             }
         }
 
@@ -124,7 +124,7 @@ export class TournamentDetail extends React.Component {
         let editButton = null;
 
         if (!this.state.isFinding && !this.state.hasError) {
-            editButton = <Button large iconLeft primary block onPress={() => {this.editTournament(this.getActualTournamentId())}}>
+            editButton = <Button dark bordered large iconLeft block style={styles.buttons} onPress={() => {this.editTournament(this.getActualTournamentId())}}>
                 <Icon name='pencil' />
                 <Text>{LB.build("CONTAINERS.TOURNAMENT_DETAIL.EDIT_BUTTON")}</Text>
             </Button>;
@@ -137,7 +137,7 @@ export class TournamentDetail extends React.Component {
         let deleteButton = null;
 
         if (!this.state.isFinding && !this.state.hasError) {
-            deleteButton = <Button large iconLeft danger block onPress={() => {this.deleteTournament(this.getActualTournamentId())}}>
+            deleteButton = <Button dark bordered large iconLeft block style={styles.buttons} onPress={() => {this.deleteTournament(this.getActualTournamentId())}}>
                 <Icon name='trash' />
                 <Text>{LB.build("CONTAINERS.TOURNAMENT_DETAIL.DELETE_BUTTON")}</Text>
             </Button>;
