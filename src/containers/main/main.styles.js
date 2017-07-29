@@ -1,7 +1,3 @@
-import {
-    Dimensions
-} from "react-native";
-
 const styles = {
     container: {},
     container_backgroundImage: {
