@@ -19,6 +19,10 @@ const styles = ({
         flexDirection: "column",
         paddingTop: 150,
     },
+    content_buttons_col: {
+        alignItems: "center",
+        paddingBottom: 20
+    },
     content_buttons_button: {
         width: 200,
         marginTop: 5,

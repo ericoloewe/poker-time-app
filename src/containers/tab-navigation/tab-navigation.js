@@ -22,8 +22,6 @@ const MainTab = TabNavigator({
         color: "#656c66"
       },
       style: {
-        borderTopColor: "#656c66",
-        borderTopWidth: 3,
         backgroundColor: "#000"
       }
     }
