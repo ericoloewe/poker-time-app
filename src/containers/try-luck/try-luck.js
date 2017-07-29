@@ -8,9 +8,9 @@ import { styles } from "./try-luck.styles";
 import { LB } from '../../configs/index';
 import { TemplateBuilder } from '../../styles/index';
 import { TryLuckAction } from "../../actions/index";
-import { Card } from "../../components/index";
+import { Card, PokerCoinButton } from "../../components/index";
 import store from "../../stores/index";
-import { Body, Button, Content, Text, Grid, Col } from 'native-base';
+import { Body, Button, Content, Text, Row, Col } from 'native-base';
 
 export class TryLuck extends React.Component {
 
@@ -41,15 +41,30 @@ export class TryLuck extends React.Component {
      */
     render() {
         return TemplateBuilder.extend(
-            <Content style={styles.table} contentContainerStyle={styles.table_contentContainer}>
-                <Button block onPress={() => store.dispatch({ type: TryLuckAction.TRY_LUCK })} style={styles.button}>
-                    <Text>{LB.build("CONTAINERS.TRY_LUCK.BUTTON")}</Text>
-                </Button>
-                <View style={styles.card}>
-                    <Card type={this.state.luck.nipe} order={this.state.luck.card}/> 
-                </View>
+            <Content style={styles.content}>
+                <Row>
+                    <Col style={styles.cardsCol}>
+                        <Card type={this.state.luck.nipe} order={this.state.luck.card}/> 
+                    </Col>
+                    <Col style={styles.cardsCol}>
+                        <Card type={this.state.luck.nipe} order={this.state.luck.card}/> 
+                    </Col>
+                </Row>
+                <Row style={styles.buttonRow}>
+                    <Col style={styles.buttonCol}>
+                        <View style={styles.button}>
+                            <PokerCoinButton onPress={() => this.tryNextLuck()}>
+                                <Text>{LB.build("CONTAINERS.TRY_LUCK.BUTTON")}</Text>
+                            </PokerCoinButton>
+                        </View>
+                    </Col>
+                </Row>
             </Content>
         );
+    }
+
+    tryNextLuck() {
+        store.dispatch({ type: TryLuckAction.TRY_LUCK });
     }
 }
 

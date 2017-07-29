@@ -9,7 +9,7 @@ const styles = {
     },
     button_own: {
         position: 'relative',
-        flex: 1,
+        margin: 4,
         width: pokerCoinSize,
         height: pokerCoinSize,
         bottom: 0,
