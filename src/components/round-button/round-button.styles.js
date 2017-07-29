@@ -15,7 +15,7 @@ const styles = {
         bottom: 0,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#DD5144",
+        backgroundColor: "#FF931E",
         borderRadius: 28,
         elevation: 4,
         shadowRadius: 2,

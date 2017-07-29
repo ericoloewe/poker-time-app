@@ -8,7 +8,7 @@ import { TemplateBuilder } from '../../styles/index';
 import { TournamentAction } from '../../actions/index';
 import { LB } from '../../configs/index';
 import store from "../../stores/index";
-import { Switch } from "react-native";
+import { Switch, View } from "react-native";
 import { Button, Content, Form, Label, Input, Item, Header, Body, Title, Text, Icon, Spinner } from 'native-base';
 
 export class TournamentRegister extends React.Component {
@@ -43,7 +43,7 @@ export class TournamentRegister extends React.Component {
         return <Form>
                     <Item stackedLabel>
                         <Label>{LB.build("CONTAINERS.TOURNAMENT_REGISTER.FORM.NAME")}</Label>
-                        <Input value={this.state.tournament.name} onChangeText={(name) => this.setModelProp({name})}/>
+                        <Input style={{marginLeft: 0}} value={this.state.tournament.name} onChangeText={(name) => this.setModelProp({name})}/>
                     </Item>
                     <Item stackedLabel>
                         <Label>{LB.build("CONTAINERS.TOURNAMENT_REGISTER.FORM.BUYN")}</Label>
@@ -51,13 +51,15 @@ export class TournamentRegister extends React.Component {
                     </Item>
                     <Item stackedLabel>
                         <Label>{LB.build("CONTAINERS.TOURNAMENT_REGISTER.FORM.ONLINE")}</Label>
-                        <Switch value={this.state.tournament.online} onValueChange={(online) => this.setModelProp({online})}/>
+                        <View style={styles.switch_view}>
+                            <Switch value={this.state.tournament.online} onValueChange={(online) => this.setModelProp({online})} onTintColor={styles.switch.backgroundColor} tintColor={styles.switch.backgroundColor} thumbTintColor={this.state.tournament.online ? styles.switch.color : "#FFF"} />
+                        </View>
                     </Item>
                     <Item stackedLabel last>
                         <Label>{LB.build("CONTAINERS.TOURNAMENT_REGISTER.FORM.DATE")}</Label>
                         <Input value={this.state.tournament.date} onChangeText={(date) => this.setModelProp({date})}/>
                     </Item>
-                    <Button block style={styles.button} onPress={() => {this.submit()}}> 
+                    <Button dark bordered large block style={styles.button} onPress={() => {this.submit()}}> 
                         <Text>{LB.build("CONTAINERS.TOURNAMENT_REGISTER.FORM.BUTTON")}</Text>
                     </Button>
                 </Form>;

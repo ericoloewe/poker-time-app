@@ -191,7 +191,7 @@ export default {
     return this.textColor;
   },
   get inputColorPlaceholder() {
-    return '#575757';
+    return '#FFF';
   },
 
   inputGroupMarginBottom: 10,
@@ -259,7 +259,7 @@ export default {
 
 
     // Text
-  textColor: '#000',
+  textColor: '#FFF',
   inverseTextColor: '#fff',
   noteFontSize: 14,
 
