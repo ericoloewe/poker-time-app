@@ -14,6 +14,7 @@ export class CardList extends React.Component {
         first: PropTypes.object,
         second: PropTypes.object,
         third: PropTypes.object,
+        animationTime: PropTypes.number.isRequired
     };
 
     constructor() {
@@ -37,7 +38,7 @@ export class CardList extends React.Component {
      */
     render() {
         let cartWidth = 124, cardHeight = 176;
-        let { first, second, third } = this.props;
+        let { first, second, third, animationTime } = this.props;
         let firstRender = null, secondRender = null, thirdRender = null;
 
         firstRender = this.renderCard(first);
@@ -47,7 +48,7 @@ export class CardList extends React.Component {
 
             Animated.timing(this.state.secondMarginTop, {
                 toValue: this.cardHeight * -.75,
-                duration: 1000
+                duration: animationTime
             }).start();    
         }
 
@@ -56,7 +57,7 @@ export class CardList extends React.Component {
 
             Animated.timing(this.state.thirdMarginTop, {
                 toValue: this.cardHeight * -.75,
-                duration: 1000
+                duration: animationTime
             }).start();    
         }
 

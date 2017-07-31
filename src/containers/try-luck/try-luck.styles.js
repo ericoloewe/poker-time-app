@@ -15,7 +15,7 @@ const styles = ({
         transform: [{
             scale: 2,
         }, {
-            translateY: 150
+            translateY: 100
         }]
     },
     buttonRow: {

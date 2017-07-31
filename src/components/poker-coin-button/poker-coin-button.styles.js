@@ -1,3 +1,5 @@
+import { Animated } from 'react-native';
+
 let pokerCoinSize = 70;
 
 const styles = {

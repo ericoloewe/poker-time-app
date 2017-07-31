@@ -20,6 +20,10 @@ export class TryLuck extends React.Component {
         this.bindEvents();
     }
 
+    get animationTime() {
+        return 100;
+    }
+
     resetState() {
         this.state = {
             firstLuckList: [],
@@ -60,16 +64,16 @@ export class TryLuck extends React.Component {
             <Content style={styles.content}>
                 <Row>
                     <Col style={styles.cardsCol}>
-                        <CardList first={firstLuckList[0]} second={firstLuckList[1]} third={firstLuckList[2]}/>
+                        <CardList first={firstLuckList[0]} second={firstLuckList[1]} third={firstLuckList[2]} animationTime={this.animationTime}/>
                     </Col>
                     <Col style={styles.cardsCol}>
-                        <CardList first={secondLuckList[0]} second={secondLuckList[1]} third={secondLuckList[2]}/>
+                        <CardList first={secondLuckList[0]} second={secondLuckList[1]} third={secondLuckList[2]} animationTime={this.animationTime}/>
                     </Col>
                 </Row>
                 <Row style={styles.buttonRow}>
                     <Col style={styles.buttonCol}>
                         <View style={styles.button}>
-                            <PokerCoinButton onPress={() => this.tryNextLuck()}>
+                            <PokerCoinButton onPressIn={() => this.startToTryLuck()} onPressOut={() => this.stopToTryLuck()}>
                                 <Text>{LB.build("CONTAINERS.TRY_LUCK.BUTTON")}</Text>
                             </PokerCoinButton>
                         </View>
@@ -82,6 +86,21 @@ export class TryLuck extends React.Component {
     tryNextLuck() {
         store.dispatch({ type: TryLuckAction.TRY_LUCK });
         store.dispatch({ type: TryLuckAction.TRY_LUCK });
+    }
+
+    startToTryLuck() {
+        this.tryNextLuck();
+
+        if (this.tryluckInterval == null) {
+            this.tryluckInterval = setInterval(() => {
+                this.tryNextLuck();
+            }, this.animationTime);
+        }
+    }
+
+    stopToTryLuck() {
+        clearInterval(this.tryluckInterval);
+        this.tryluckInterval = null;
     }
 }
 
