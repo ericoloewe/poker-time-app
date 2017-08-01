@@ -38,7 +38,7 @@ export class PokerCoinButton extends React.Component {
         };
 
         if (this.state.isPressing) {
-            animation.toValue = 1.5;
+            animation.toValue = 1.2;
         } else {
             animation.toValue = 1;
         }
