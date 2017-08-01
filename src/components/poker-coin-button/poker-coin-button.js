@@ -24,7 +24,7 @@ export class PokerCoinButton extends React.Component {
     resetState() {
         this.state = {
             isPressing: false,
-            imageScale: new Animated.Value(1)
+            imageScale: new Animated.Value(.75)
         };
     }
 
@@ -32,15 +32,15 @@ export class PokerCoinButton extends React.Component {
      * @description render the component
      */
     render() {
-        let animation = {duration: 150}
+        let animation = {duration: 150, useNativeDriver: true};
         let buttonCustomStyles = {
             transform: [{scale: this.state.imageScale}]
         };
 
         if (this.state.isPressing) {
-            animation.toValue = 1.2;
-        } else {
             animation.toValue = 1;
+        } else {
+            animation.toValue = .8;
         }
 
         Animated.timing(this.state.imageScale, animation).start();

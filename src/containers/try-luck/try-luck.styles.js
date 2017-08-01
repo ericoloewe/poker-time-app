@@ -37,6 +37,9 @@ const styles = ({
             translateY: -50
         }]
     },
+    cardsRow: {
+        height: 300
+    },
     cardsCol: {
         alignItems: "center"
     }

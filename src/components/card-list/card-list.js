@@ -13,13 +13,16 @@ export class CardList extends React.Component {
     static propTypes = {
         first: PropTypes.object,
         second: PropTypes.object,
-        third: PropTypes.object,
-        animationTime: PropTypes.number.isRequired
+        third: PropTypes.object
     };
 
     constructor() {
         super();
         this.resetState();
+    }
+
+    get animationTime() {
+        return 500;
     }
 
     get cardHeight() {
@@ -28,8 +31,8 @@ export class CardList extends React.Component {
 
     resetState() {
         this.state = {
-            secondMarginTop:  new Animated.Value(this.cardHeight * -1),
-            thirdMarginTop: new Animated.Value(this.cardHeight * -1),
+            secondTranslateY:  new Animated.Value(this.cardHeight * -1),
+            thirdTranslateY: new Animated.Value(this.cardHeight * -1),
         };
     }
 
@@ -38,28 +41,32 @@ export class CardList extends React.Component {
      */
     render() {
         let cartWidth = 124, cardHeight = 176;
-        let { first, second, third, animationTime } = this.props;
+        let { first, second, third } = this.props;
         let firstRender = null, secondRender = null, thirdRender = null;
+        let animationOptions = { duration: this.animationTime, useNativeDriver: true };
+        let animations = [];
 
         firstRender = this.renderCard(first);
 
         if (!!second) {
-            secondRender = this.renderCard(second, { marginTop: this.state.secondMarginTop });
+            secondRender = this.renderCard(second, { transform: [ { translateY: this.state.secondTranslateY } ] });
 
-            Animated.timing(this.state.secondMarginTop, {
-                toValue: this.cardHeight * -.75,
-                duration: animationTime
-            }).start();    
+            animations.push(Animated.timing(this.state.secondTranslateY, {
+                ...animationOptions,
+                toValue: this.cardHeight * -.75
+            }));
         }
 
         if (!!third) {
-            thirdRender = this.renderCard(third, { marginTop: this.state.thirdMarginTop });
+            thirdRender = this.renderCard(third, { transform: [ { translateY: this.state.thirdTranslateY } ] });
 
-            Animated.timing(this.state.thirdMarginTop, {
-                toValue: this.cardHeight * -.75,
-                duration: animationTime
-            }).start();    
+            animations.push(Animated.timing(this.state.thirdTranslateY, {
+                ...animationOptions,
+                toValue: this.cardHeight * -1.50
+            }));
         }
+
+        Animated.parallel(animations).start();
 
         return (
             <View style={{
@@ -76,8 +83,8 @@ export class CardList extends React.Component {
     /**
      * @description render the card
      */
-    renderCard(luck = {}, styles = {}) {
-        return <Animated.View style={styles}>
+    renderCard(luck = {}, specialStyles = {}) {
+        return <Animated.View style={{...specialStyles, ...styles.animatedView}}>
             <Card type={luck.nipe} order={luck.card}/> 
         </Animated.View>;
     }

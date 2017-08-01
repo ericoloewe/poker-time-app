@@ -23,6 +23,7 @@ const styles = {
         shadowRadius: 2,
         shadowOpacity: 0.4,
         shadowColor: "#000",
+        zIndex: 7,
         shadowOffset: {
             width: 0,
             height: 2

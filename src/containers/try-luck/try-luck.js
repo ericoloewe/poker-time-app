@@ -25,7 +25,7 @@ export class TryLuck extends React.Component {
     }
 
     get animationTime() {
-        return 1000;
+        return 300;
     }
 
     resetState() {
@@ -46,12 +46,12 @@ export class TryLuck extends React.Component {
 
         return TemplateBuilder.extend(
             <Content style={styles.content}>
-                <Row>
+                <Row style={styles.cardsRow}>
                     <Col style={styles.cardsCol}>
-                        <CardList first={firstLuckList[0]} second={firstLuckList[1]} third={firstLuckList[2]} animationTime={this.animationTime}/>
+                        <CardList first={firstLuckList[0]} second={firstLuckList[1]} third={firstLuckList[2]} />
                     </Col>
                     <Col style={styles.cardsCol}>
-                        <CardList first={secondLuckList[0]} second={secondLuckList[1]} third={secondLuckList[2]} animationTime={this.animationTime}/>
+                        <CardList first={secondLuckList[0]} second={secondLuckList[1]} third={secondLuckList[2]} />
                     </Col>
                 </Row>
                 <Row style={styles.buttonRow}>
@@ -97,18 +97,26 @@ export class TryLuck extends React.Component {
     }
 
     startToTryLuck() {
+        let self = this;
         this.tryNextLuck();
 
         if (this.tryluckInterval == null) {
-            this.tryluckInterval = this.setInterval(() => {
-                this.tryNextLuck();
-            }, this.animationTime);
+            repeatInterval();
+        }
+
+        function repeatInterval() {
+            self.tryluckInterval = self.requestAnimationFrame(() => {
+                if (self.tryluckInterval != null) {
+                    self.tryNextLuck();
+                    self.setTimeout(() => repeatInterval(), self.animationTime);
+                }
+            }, self.animationTime);
         }
     }
 
     stopToTryLuck() {
-        this.clearInterval(this.tryluckInterval);
         this.tryluckInterval = null;
+        this.cancelAnimationFrame(this.tryluckInterval);
     }
 }
 

@@ -1,3 +1,7 @@
-const styles = {};
+const styles = {
+    animatedView: {
+        position: "relative"
+    }
+};
 
 export { styles };
