@@ -11,6 +11,8 @@ import { TryLuckAction } from "../../actions/index";
 import { CardList, PokerCoinButton } from "../../components/index";
 import store from "../../stores/index";
 import { Body, Button, Content, Text, Row, Col } from 'native-base';
+import TimerMixin from 'react-timer-mixin';
+import reactMixin from 'react-mixin';
 
 export class TryLuck extends React.Component {
 
@@ -103,5 +105,7 @@ export class TryLuck extends React.Component {
         this.tryluckInterval = null;
     }
 }
+
+reactMixin(TryLuck.prototype, TimerMixin);
 
 export { TryLuck as Component };
