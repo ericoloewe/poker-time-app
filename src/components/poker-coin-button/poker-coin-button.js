@@ -3,7 +3,7 @@
  */
 
 import * as React from "react";
-import { View, Image, TouchableWithoutFeedback, Animated } from 'react-native';
+import { View, Image, TouchableWithoutFeedback, Animated, Easing } from 'react-native';
 import { Text, Button } from 'native-base';
 import { styles } from "./poker-coin-button.styles";
 import PropTypes from 'prop-types';
@@ -32,7 +32,7 @@ export class PokerCoinButton extends React.Component {
      * @description render the component
      */
     render() {
-        let animation = {duration: 150, useNativeDriver: true};
+        let animation = { duration: 150, useNativeDriver: true, easing: Easing.bounce };
         let buttonCustomStyles = {
             transform: [{scale: this.state.imageScale}]
         };

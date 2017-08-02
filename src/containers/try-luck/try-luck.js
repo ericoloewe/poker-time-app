@@ -25,13 +25,14 @@ export class TryLuck extends React.Component {
     }
 
     get animationTime() {
-        return 300;
+        return 500;
     }
 
     resetState() {
         this.state = {
             firstLuckList: [],
-            secondLuckList: []
+            secondLuckList: [],
+            wantToShowOneCard: false
         };
     }
 
@@ -48,10 +49,10 @@ export class TryLuck extends React.Component {
             <Content style={styles.content}>
                 <Row style={styles.cardsRow}>
                     <Col style={styles.cardsCol}>
-                        <CardList first={firstLuckList[0]} second={firstLuckList[1]} third={firstLuckList[2]} />
+                        <CardList first={firstLuckList[2]} second={firstLuckList[1]} third={firstLuckList[0]} />
                     </Col>
                     <Col style={styles.cardsCol}>
-                        <CardList first={secondLuckList[0]} second={secondLuckList[1]} third={secondLuckList[2]} />
+                        <CardList first={secondLuckList[2]} second={secondLuckList[1]} third={secondLuckList[0]} />
                     </Col>
                 </Row>
                 <Row style={styles.buttonRow}>
@@ -97,26 +98,21 @@ export class TryLuck extends React.Component {
     }
 
     startToTryLuck() {
-        let self = this;
-        this.tryNextLuck();
-
         if (this.tryluckInterval == null) {
-            repeatInterval();
-        }
+            this.tryNextLuck();
 
-        function repeatInterval() {
-            self.tryluckInterval = self.requestAnimationFrame(() => {
-                if (self.tryluckInterval != null) {
-                    self.tryNextLuck();
-                    self.setTimeout(() => repeatInterval(), self.animationTime);
-                }
-            }, self.animationTime);
+            this.tryluckInterval = this.setInterval(() => {
+                this.tryNextLuck();
+            }, this.animationTime);
         }
     }
 
     stopToTryLuck() {
+        this.clearInterval(this.tryluckInterval);
         this.tryluckInterval = null;
-        this.cancelAnimationFrame(this.tryluckInterval);
+        this.setState({
+            wantToShowOneCard: true
+        });
     }
 }
 
