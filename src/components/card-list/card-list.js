@@ -107,7 +107,7 @@ export class CardList extends React.Component {
     }
 
     animateCards() {
-        let animationOptions = { duration: this.animationTime, useNativeDriver: true, easing: Easing.linear };
+        let animationOptions = { duration: this.animationTime, useNativeDriver: true, easing: Easing.bounce };
         let { first, second, third } = this.props;
 
         if (!!second) {
@@ -120,6 +120,7 @@ export class CardList extends React.Component {
         if (!!first) {
             Animated.timing(this.state.thirdTranslateY, {
                 ...animationOptions,
+                duration: this.animationTime + 200,
                 toValue: this.cardHeight * .50
             }).start();
         }
