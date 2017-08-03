@@ -69,11 +69,13 @@ export class CardList extends React.Component {
     }
 
     renderAndAnimateCards() {
-        let render = this.renderCards();
+        if (this.props.isStoped) {
+            this.resetCardsAnimation();
+        } else {
+            this.animateCards();
+        }
 
-        this.animateCards();
-
-        return render;
+        return this.renderCards();
     }
 
     renderCards() {
@@ -124,6 +126,23 @@ export class CardList extends React.Component {
                 toValue: this.cardHeight * .50
             }).start();
         }
+    }
+
+    resetCardsAnimation() {
+        let animationOptions = { duration: this.animationTime, useNativeDriver: true, easing: Easing.bounce };
+
+        this.state.secondTranslateY = new Animated.Value(this.cardHeight * .25);
+        this.state.thirdTranslateY = new Animated.Value(this.cardHeight * .50);
+
+        Animated.timing(this.state.secondTranslateY, {
+            ...animationOptions,
+            toValue: 0
+        }).start();
+        Animated.timing(this.state.thirdTranslateY, {
+            ...animationOptions,
+            duration: this.animationTime + 200,
+            toValue: 0
+        }).start();
     }
 
     /**

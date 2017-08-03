@@ -32,7 +32,7 @@ export class TryLuck extends React.Component {
         this.state = {
             firstLuckList: [],
             secondLuckList: [],
-            wantToShowOneCard: false
+            isStoped: false
         };
     }
 
@@ -44,28 +44,51 @@ export class TryLuck extends React.Component {
      */
     render() {
         let { firstLuckList, secondLuckList } = this.state;
+        let button = this.renderButton();
 
         return TemplateBuilder.extend(
             <Content style={styles.content}>
                 <Row style={styles.cardsRow}>
                     <Col style={styles.cardsCol}>
-                        <CardList first={firstLuckList[2]} second={firstLuckList[1]} third={firstLuckList[0]} />
+                        <CardList 
+                            first={firstLuckList[2]} 
+                            second={firstLuckList[1]} 
+                            third={firstLuckList[0]}
+                            isStoped={this.state.isStoped} />
                     </Col>
                     <Col style={styles.cardsCol}>
-                        <CardList first={secondLuckList[2]} second={secondLuckList[1]} third={secondLuckList[0]} />
+                        <CardList 
+                            first={secondLuckList[2]} 
+                            second={secondLuckList[1]} 
+                            third={secondLuckList[0]}
+                            isStoped={this.state.isStoped} />
                     </Col>
                 </Row>
                 <Row style={styles.buttonRow}>
                     <Col style={styles.buttonCol}>
                         <View style={styles.button}>
-                            <PokerCoinButton onPressIn={() => this.startToTryLuck()} onPressOut={() => this.stopToTryLuck()}>
-                                <Text>{LB.build("CONTAINERS.TRY_LUCK.BUTTON")}</Text>
-                            </PokerCoinButton>
+                            {button}
                         </View>
                     </Col>
                 </Row>
             </Content>
         );
+    }
+
+    renderButton() {
+        let button = null;
+
+        if (this.state.isStoped) {
+            button = <PokerCoinButton onPress={() => this.resetTryLuck()}>
+                <Text>{LB.build("CONTAINERS.TRY_LUCK.RESET_BUTTON")}</Text>
+            </PokerCoinButton>;
+        } else {
+            button = <PokerCoinButton onPressIn={() => this.startToTryLuck()} onPressOut={() => this.stopToTryLuck()}>
+                <Text>{LB.build("CONTAINERS.TRY_LUCK.BUTTON")}</Text>
+            </PokerCoinButton>;
+        }
+
+        return button;
     }
 
     tryNextLuck() {
@@ -111,7 +134,15 @@ export class TryLuck extends React.Component {
         this.clearInterval(this.tryluckInterval);
         this.tryluckInterval = null;
         this.setState({
-            wantToShowOneCard: true
+            isStoped: true
+        });
+    }
+
+    resetTryLuck() {
+        this.setState({
+            firstLuckList: [],
+            secondLuckList: [],
+            isStoped: false
         });
     }
 }
