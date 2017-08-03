@@ -134,15 +134,17 @@ export class CardList extends React.Component {
         this.state.secondTranslateY = new Animated.Value(this.cardHeight * .25);
         this.state.thirdTranslateY = new Animated.Value(this.cardHeight * .50);
 
-        Animated.timing(this.state.secondTranslateY, {
-            ...animationOptions,
-            toValue: 0
-        }).start();
-        Animated.timing(this.state.thirdTranslateY, {
-            ...animationOptions,
-            duration: this.animationTime + 200,
-            toValue: 0
-        }).start();
+        Animated.parallel([
+            Animated.timing(this.state.secondTranslateY, {
+                ...animationOptions,
+                toValue: 0
+            }),
+            Animated.timing(this.state.thirdTranslateY, {
+                ...animationOptions,
+                duration: this.animationTime + 200,
+                toValue: 0
+            })
+        ]).start();
     }
 
     /**
