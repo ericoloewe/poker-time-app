@@ -77,14 +77,15 @@ export class TryLuck extends React.Component {
 
     renderButton() {
         let button = null;
+        let buttonStyles = { fontSize: 14 };
 
         if (this.state.isStoped) {
             button = <PokerCoinButton onPress={() => this.resetTryLuck()}>
-                <Text>{LB.build("CONTAINERS.TRY_LUCK.RESET_BUTTON")}</Text>
+                <Text style={buttonStyles}>{LB.build("CONTAINERS.TRY_LUCK.RESET_BUTTON")}</Text>
             </PokerCoinButton>;
         } else {
             button = <PokerCoinButton onPressIn={() => this.startToTryLuck()} onPressOut={() => this.stopToTryLuck()}>
-                <Text>{LB.build("CONTAINERS.TRY_LUCK.BUTTON")}</Text>
+                <Text style={buttonStyles}>{LB.build("CONTAINERS.TRY_LUCK.BUTTON")}</Text>
             </PokerCoinButton>;
         }
 

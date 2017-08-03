@@ -24,7 +24,7 @@ export class PokerCoinButton extends React.Component {
     resetState() {
         this.state = {
             isPressing: false,
-            imageScale: new Animated.Value(.75)
+            imageScale: new Animated.Value(.9)
         };
     }
 
@@ -40,7 +40,7 @@ export class PokerCoinButton extends React.Component {
         if (this.state.isPressing) {
             animation.toValue = 1;
         } else {
-            animation.toValue = .8;
+            animation.toValue = .9;
         }
 
         Animated.timing(this.state.imageScale, animation).start();
@@ -59,23 +59,25 @@ export class PokerCoinButton extends React.Component {
     }
 
     callOnPress() {
+        this.setState({isPressing: false});
+
         if (typeof(this.props.onPress) === "function") {
             this.props.onPress();
         }
     }
 
     callOnPressIn() {
+        this.setState({isPressing: true});
+
         if (typeof(this.props.onPressIn) === "function") {
-            console.log("IN");
-            this.setState({isPressing: true});
             this.props.onPressIn();
         }
     }
 
     callOnPressOut() {
+        this.setState({isPressing: false});
+
         if (typeof(this.props.onPressOut) === "function") {
-            console.log("OUT");
-            this.setState({isPressing: false});
             this.props.onPressOut();
         }
     }
