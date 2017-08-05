@@ -147,6 +147,7 @@ export class TryLuck extends React.Component {
             this.sound.play(() => {
                 this.sound.release();
             });
+            this.sound.setNumberOfLoops(-1);
         });
     }
 
