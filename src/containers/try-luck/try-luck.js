@@ -11,10 +11,11 @@ import { TryLuckAction } from "../../actions/index";
 import { CardList, PokerCoinButton } from "../../components/index";
 import store from "../../stores/index";
 import { Body, Button, Content, Text, Row, Col } from 'native-base';
-import { VALUES } from '../../configs/index';
+import { VALUES, Logger } from '../../configs/index';
 import { RandomUtils } from '../../utils/index';
 import TimerMixin from 'react-timer-mixin';
 import reactMixin from 'react-mixin';
+import Sound from 'react-native-sound';
 
 export class TryLuck extends React.Component {
 
@@ -22,6 +23,11 @@ export class TryLuck extends React.Component {
         super();
         this.resetState();
         this.bindEvents();
+        this.sound = null;
+        this.audios = {
+            cardShuffle: require("../../medias/audios/card-shuffle.wav")
+        };
+        this.LOGGER = new Logger("logger");
     }
 
     get animationTime() {
@@ -124,11 +130,24 @@ export class TryLuck extends React.Component {
     startToTryLuck() {
         if (this.tryluckInterval == null) {
             this.tryNextLuck();
+            this.startTryLuckSound();
 
             this.tryluckInterval = this.setInterval(() => {
                 this.tryNextLuck();
             }, this.animationTime);
         }
+    }
+
+    startTryLuckSound() {
+        this.sound = new Sound(this.audios.cardShuffle, error => {
+            if (!!error) {
+                this.LOGGER.error("We had some problem to get sound", error);
+            }
+
+            this.sound.play(() => {
+                this.sound.release();
+            });
+        });
     }
 
     stopToTryLuck() {
@@ -137,6 +156,12 @@ export class TryLuck extends React.Component {
         this.setState({
             isStoped: true
         });
+        this.stopTryLuckSound();
+    }
+
+    stopTryLuckSound() {
+        this.sound.stop().release();
+        this.sound = null;
     }
 
     resetTryLuck() {
