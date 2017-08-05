@@ -85,25 +85,19 @@ export class CardList extends React.Component {
 
         firstRender = this.renderCard(first, { marginTop: 0 });
 
-        if (!!second) {
-            secondRender = this.renderCard(second, {
-                transform: [{
-                    translateY: this.state.secondTranslateY
-                }],
-                zIndex: 5
-            });
-        }
+        secondRender = this.renderCard(second, {
+            transform: [{
+                translateY: this.state.secondTranslateY
+            }],
+            zIndex: 5
+        });
 
-        if (!!first) {
-            thirdStyles = {
-                transform: [{
-                    translateY: this.state.thirdTranslateY
-                }],
-                zIndex: 7
-            };
-        }
-
-        thirdRender = this.renderCard(third, thirdStyles);
+        thirdRender = this.renderCard(third, {
+            transform: [{
+                translateY: this.state.thirdTranslateY
+            }],
+            zIndex: 7
+        });
 
         return { firstRender, secondRender, thirdRender };
     }
@@ -113,18 +107,24 @@ export class CardList extends React.Component {
         let { first, second, third } = this.props;
 
         if (!!second) {
-            Animated.timing(this.state.secondTranslateY, {
+            Animated.timing(this.state.thirdTranslateY, {
                 ...animationOptions,
                 toValue: this.cardHeight * .25
             }).start();
         }
 
         if (!!first) {
-            Animated.timing(this.state.thirdTranslateY, {
-                ...animationOptions,
-                duration: this.animationTime + 200,
-                toValue: this.cardHeight * .50
-            }).start();
+            Animated.parallel([
+                Animated.timing(this.state.secondTranslateY, {
+                    ...animationOptions,
+                    toValue: this.cardHeight * .25
+                }),
+                Animated.timing(this.state.thirdTranslateY, {
+                    ...animationOptions,
+                    duration: this.animationTime + 200,
+                    toValue: this.cardHeight * .50
+                })
+            ]).start();
         }
     }
 

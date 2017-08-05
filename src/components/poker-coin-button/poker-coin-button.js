@@ -49,7 +49,7 @@ export class PokerCoinButton extends React.Component {
             <View style={styles.button_container}>
                 <TouchableWithoutFeedback onPressOut={() => this.callOnPressOut()} onPressIn={() => this.callOnPressIn()} onPress={() => this.callOnPress()}>
                     <Animated.View style={{...styles.button_own, ...buttonCustomStyles}}>
-                        <Image source={require("../../medias/images/coin.png")} style={{...styles.button_image}}>
+                        <Image source={require("../../medias/images/poker-coin.png")} style={{...styles.button_image}}>
                             {this.props.children}
                         </Image>
                     </Animated.View>
