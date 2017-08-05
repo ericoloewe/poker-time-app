@@ -1,4 +1,4 @@
-package com.baseproject.views;
+package com.pokertime.views;
 
 import android.content.Context;
 import android.view.View;

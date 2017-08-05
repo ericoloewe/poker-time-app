@@ -1,8 +1,8 @@
-package com.baseproject.packages;
+package com.pokertime.packages;
 
 import android.app.Activity;
 
-import com.baseproject.managers.TryLuckManager;
+import com.pokertime.managers.TryLuckManager;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
 import com.facebook.react.bridge.NativeModule;

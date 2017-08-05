@@ -1,6 +1,6 @@
-package com.baseproject.managers;
+package com.pokertime.managers;
 
-import com.baseproject.views.TryLuckView;
+import com.pokertime.views.TryLuckView;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 
