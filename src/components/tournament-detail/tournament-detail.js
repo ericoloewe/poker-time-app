@@ -11,7 +11,8 @@ import { LB } from '../../configs/index';
 export class TournamentDetail extends React.Component {
 
     static propTypes = {
-        tournament: React.PropTypes.object.isRequired
+        tournament: React.PropTypes.object.isRequired,
+        style: React.PropTypes.object
     }
     
     /**
@@ -19,7 +20,7 @@ export class TournamentDetail extends React.Component {
      */
     render() {
         return (
-            <View>
+            <View style={this.props.style}>
                 <Text style={styles.title}>
                     {LB.build("COMPONENTS.TOURNAMENT_DETAIL.NAME")}: 
                 </Text>

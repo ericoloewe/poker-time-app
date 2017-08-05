@@ -3,7 +3,7 @@
  */
 import { TabNavigator, TabBarBottom } from 'react-navigation';
 import { Home, Settings } from "../../containers/index";
-import { TemplateBuilder } from "../../styles/index";
+import { TemplateBuilder } from "../../styles/index"; 
 
 const MainTab = TabNavigator({
   Home: {
@@ -14,7 +14,17 @@ const MainTab = TabNavigator({
   },
 }, {
     tabBarComponent: TabBarBottom,
-    tabBarPosition: 'bottom'
+    tabBarPosition: 'bottom',
+    tabBarOptions: {
+      inactiveTintColor: "#656c66",
+      activeTintColor: "#FFF",
+      labelStyle: {
+        color: "#656c66"
+      },
+      style: {
+        backgroundColor: "#000"
+      }
+    }
 });
 
 export { MainTab };

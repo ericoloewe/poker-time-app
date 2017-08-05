@@ -8,7 +8,7 @@ export class TemplateBuilder {
         return getTheme(TemplateBuilder._actualTheme);
     }
 
-    static extend(content) {
-        return new Main().render(content);
+    static extend(content, options) {
+        return new Main().render(content, options);
     }
 }

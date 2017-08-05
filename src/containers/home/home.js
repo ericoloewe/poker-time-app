@@ -3,10 +3,12 @@
  */
 
 import * as React from "react";
+import { View, Image } from 'react-native';
 import { styles } from "./home.styles";
 import { LB } from '../../configs/index';
 import { TemplateBuilder } from '../../styles/index';
-import { Button, Content, Icon, Text } from 'native-base';
+import { PokerCoinButton } from "../../components/index";
+import { Button, Content, Icon, Text, Row, Col } from 'native-base';
 
 export class Home extends React.Component {
     static navigationOptions = {
@@ -21,28 +23,49 @@ export class Home extends React.Component {
     render() {
         return TemplateBuilder.extend(
             <Content>
-                <Button large iconLeft block onPress={() => {this.props.navigation.navigate('TryLuck')}}> 
-                    <Icon name='baseball' />
-                    <Text>{LB.build("CONTAINERS.HOME.TRY_LUCK")}</Text>
-                </Button>
-                <Button large iconLeft block>
-                    <Icon name='calculator' />
-                    <Text>{LB.build("CONTAINERS.HOME.CALC")}</Text>
-                </Button>
-                <Button large iconLeft block onPress={() => {this.props.navigation.navigate('Bankhall')}}>
-                    <Icon name='pulse' />
-                    <Text>{LB.build("CONTAINERS.HOME.BANKHALL")}</Text>
-                </Button>
-                <Button large iconLeft block onPress={() => {this.props.navigation.navigate('Tournament')}}>
-                    <Icon name='flame' />
-                    <Text>{LB.build("CONTAINERS.HOME.TOURNAMENTS")}</Text>
-                </Button>
+                <View style={styles.content_cards}>
+                    <Image source={require("../../medias/images/cards.png")} style={styles.content_cards_image} />
+                </View>
+                <View style={styles.content_buttons}>
+                    <Row>
+                        <Col style={styles.content_buttons_col}>
+                            <PokerCoinButton onPress={() => this.goToCalculator()}>
+                                <Icon name='calculator' />
+                            </PokerCoinButton>
+                        </Col>
+                        <Col style={styles.content_buttons_col}>
+                            <PokerCoinButton onPress={() => this.goToBankhall()}>
+                                <Icon name='pulse' />
+                            </PokerCoinButton>
+                        </Col>
+                    </Row>
+                    <Button dark bordered large iconLeft style={styles.content_buttons_button} onPress={() => this.goToTryLuck()}> 
+                        <Icon name='baseball' />
+                        <Text style={styles.content_buttons_button_text}>{LB.build("CONTAINERS.HOME.TRY_LUCK")}</Text>
+                    </Button>
+                    <Button dark bordered large iconLeft style={styles.content_buttons_button} onPress={() => this.goToTournament()}>
+                        <Icon name='flame' />
+                        <Text style={styles.content_buttons_button_text}>{LB.build("CONTAINERS.HOME.TOURNAMENTS")}</Text>
+                    </Button>
+                </View>
             </Content>
         );
     }
 
-    openPlayLuck(e) {
-        
+    goToCalculator() {
+        this.props.navigation.navigate('Calculator');
+    }
+
+    goToTryLuck(e) {
+        this.props.navigation.navigate('TryLuck');
+    }
+
+    goToBankhall(e) {
+        this.props.navigation.navigate('Bankhall');
+    }
+
+    goToTournament(e) {
+        this.props.navigation.navigate('Tournament');
     }
 }
 

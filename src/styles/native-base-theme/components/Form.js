@@ -31,8 +31,8 @@ export default (variables = variable) => {
         paddingLeft: null,
       },
       'NativeBase.Input': {
-        paddingLeft: null,
-        marginLeft: (platform === 'ios') ? undefined : -5,
+        paddingLeft: 15,
+        marginLeft: (platform === 'ios') ? undefined : 0,
       },
       marginLeft: 15,
     },

@@ -13,16 +13,16 @@ export default (variables = variable) => {
       '.bordered': {
         '.dark': {
           'NativeBase.Text': {
-            color: '#000',
+            color: '#FFF',
           },
           'NativeBase.Icon': {
-            color: '#000',
+            color: '#FFF',
           },
           'NativeBase.IconNB': {
-            color: '#000',
+            color: '#FFF',
           },
-          backgroundColor: 'transparent',
-          borderColor: '#000',
+          backgroundColor: '#000',
+          borderColor: '#656c66',
           borderWidth: variables.borderWidth * 2,
         },
         '.light': {
@@ -138,16 +138,17 @@ export default (variables = variable) => {
       '.dark': {
         '.bordered': {
           'NativeBase.Text': {
-            color: '#000',
+            color: '#FFF',
           },
           'NativeBase.Icon': {
-            color: '#000',
+            color: '#FFF',
           },
           'NativeBase.IconNB': {
-            color: '#000',
+            color: '#FFF',
           },
         },
         backgroundColor: '#000',
+        borderColor: '#656c66',
       },
       '.light': {
         '.transparent': {
@@ -479,7 +480,8 @@ export default (variables = variable) => {
       height: 45,
       alignSelf: 'flex-start',
       flexDirection: 'row',
-      elevation: 2,
+      borderRadius: 20,
+      elevation: 5,
       shadowColor: (platformStyle==='material') ? '#000' : undefined,
       shadowOffset: (platformStyle==='material') ? {width: 0, height: 2} : undefined,
       shadowOpacity: (platformStyle==='material') ?  0.2 : undefined,

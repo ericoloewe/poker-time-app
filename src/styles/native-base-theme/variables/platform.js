@@ -159,7 +159,7 @@ export default {
 
     // Header
   toolbarBtnColor: (platform === 'ios') ? '#007aff' : '#fff',
-  toolbarDefaultBg: (platform === 'ios') ? '#F8F8F8' : '#3F51B5',
+  toolbarDefaultBg: (platform === 'ios') ? '#F8F8F8' : '#000',
   toolbarHeight: (platform === 'ios') ? 64 : 56,
   toolbarIconSize: (platform === 'ios') ? 20 : 22,
   toolbarSearchIconSize: (platform === 'ios') ? 20 : 23,
@@ -191,7 +191,7 @@ export default {
     return this.textColor;
   },
   get inputColorPlaceholder() {
-    return '#575757';
+    return '#FFF';
   },
 
   inputGroupMarginBottom: 10,
@@ -259,7 +259,7 @@ export default {
 
 
     // Text
-  textColor: '#000',
+  textColor: '#FFF',
   inverseTextColor: '#fff',
   noteFontSize: 14,
 

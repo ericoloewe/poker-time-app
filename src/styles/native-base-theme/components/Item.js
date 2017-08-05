@@ -37,15 +37,18 @@ export default (variables = variable) => {
           left: null,
           right: null,
           paddingTop: 5,
+          marginBottom: 10,
           alignSelf: 'flex-start',
           fontSize: variables.inputFontSize - 2,
         },
         'NativeBase.Input': {
+          paddingTop: 10,
           alignSelf: (Platform.OS === 'ios') ? 'stretch' : 'flex-start',
           flex: 1,
           width: (Platform.OS === 'ios') ? null : variables.deviceWidth - 25,
           fontSize: variables.inputFontSize,
         },
+        borderWidth: 0,
         flexDirection: null,
       },
       '.inlineLabel': {
@@ -85,6 +88,7 @@ export default (variables = variable) => {
         top: (Platform.OS === 'ios') ? 1.5 : undefined,
         fontSize: variables.inputFontSize,
         lineHeight: variables.inputLineHeight,
+        borderRadius: 10
       },
       '.underline': {
         'NativeBase.Input': {
@@ -192,15 +196,10 @@ export default (variables = variable) => {
         },
       },
 
-      borderWidth: variables.borderWidth * 2,
-      borderTopWidth: 0,
-      borderRightWidth: 0,
-      borderLeftWidth: 0,
-      borderColor: variables.inputBorderColor,
+      borderWidth: 0,
       backgroundColor: 'transparent',
       flexDirection: 'row',
-      alignItems: 'center',
-      marginLeft: 2,
+      alignItems: 'center'
   };
 
 
