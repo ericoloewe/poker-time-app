@@ -23,15 +23,10 @@ export class TryLuck extends React.Component {
         super();
         this.resetState();
         this.bindEvents();
-        this.sound = null;
-        this.audios = {
-            cardShuffle: require("../../medias/audios/card-shuffle.wav")
-        };
-        this.LOGGER = new Logger("logger");
     }
 
     get animationTime() {
-        return 500;
+        return 300;
     }
 
     resetState() {
@@ -43,6 +38,10 @@ export class TryLuck extends React.Component {
     }
 
     bindEvents() {
+    }
+
+    componentWillMount() {
+        this.resetAttributes();
     }
     
     /**
@@ -139,15 +138,8 @@ export class TryLuck extends React.Component {
     }
 
     startTryLuckSound() {
-        this.sound = new Sound(this.audios.cardShuffle, error => {
-            if (!!error) {
-                this.LOGGER.error("We had some problem to get sound", error);
-            }
-
-            this.sound.play(() => {
-                this.sound.release();
-            });
-            this.sound.setNumberOfLoops(-1);
+        this.sound.play(() => {
+            this.sound.release();
         });
     }
 
@@ -162,7 +154,6 @@ export class TryLuck extends React.Component {
 
     stopTryLuckSound() {
         this.sound.stop().release();
-        this.sound = null;
     }
 
     resetTryLuck() {
@@ -170,6 +161,20 @@ export class TryLuck extends React.Component {
             firstLuckList: [],
             secondLuckList: [],
             isStoped: false
+        });
+    }
+
+    resetAttributes() {
+        this.audios = {
+            cardShuffle: require("../../medias/audios/card-shuffle.wav")
+        };
+        this.LOGGER = new Logger("logger");
+        this.sound = new Sound(this.audios.cardShuffle, error => {
+            if (!!error) {
+                this.LOGGER.error("We had some problem to get sound", error);
+            }
+
+            this.sound.setNumberOfLoops(-1);
         });
     }
 }
