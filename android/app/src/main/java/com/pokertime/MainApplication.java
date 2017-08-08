@@ -1,8 +1,8 @@
-package com.baseproject;
+package com.pokertime;
 
 import android.app.Application;
 
-import com.baseproject.packages.TryLuckPackage;
+import com.pokertime.packages.TryLuckPackage;
 import com.facebook.react.ReactApplication;
 import com.zmxv.RNSound.RNSoundPackage;
 import com.BV.LinearGradient.LinearGradientPackage;

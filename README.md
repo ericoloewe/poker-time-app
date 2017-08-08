@@ -1,4 +1,4 @@
-# BaseProject
+# PokerTime
 A smart base of react-native projects
 
 This project uses [React native](https://facebook.github.io/react-native/).

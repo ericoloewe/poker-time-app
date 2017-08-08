@@ -9,4 +9,4 @@ import { AppRegistry } from 'react-native';
 import { MainAndroid } from './app/index';
 import Extensions from "./extensions/index";
 
-AppRegistry.registerComponent('BaseProject', () => MainAndroid);
+AppRegistry.registerComponent('PokerTime', () => MainAndroid);

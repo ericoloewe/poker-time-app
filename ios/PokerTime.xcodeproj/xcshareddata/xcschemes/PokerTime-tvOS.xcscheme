@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "BaseProject-tvOS.app"
-               BlueprintName = "BaseProject-tvOS"
-               ReferencedContainer = "container:BaseProject.xcodeproj">
+               BuildableName = "PokerTime-tvOS.app"
+               BlueprintName = "PokerTime-tvOS"
+               ReferencedContainer = "container:PokerTime.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "BaseProject-tvOSTests.xctest"
-               BlueprintName = "BaseProject-tvOSTests"
-               ReferencedContainer = "container:BaseProject.xcodeproj">
+               BuildableName = "PokerTime-tvOSTests.xctest"
+               BlueprintName = "PokerTime-tvOSTests"
+               ReferencedContainer = "container:PokerTime.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "BaseProject-tvOSTests.xctest"
-               BlueprintName = "BaseProject-tvOSTests"
-               ReferencedContainer = "container:BaseProject.xcodeproj">
+               BuildableName = "PokerTime-tvOSTests.xctest"
+               BlueprintName = "PokerTime-tvOSTests"
+               ReferencedContainer = "container:PokerTime.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "BaseProject-tvOS.app"
-            BlueprintName = "BaseProject-tvOS"
-            ReferencedContainer = "container:BaseProject.xcodeproj">
+            BuildableName = "PokerTime-tvOS.app"
+            BlueprintName = "PokerTime-tvOS"
+            ReferencedContainer = "container:PokerTime.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "BaseProject-tvOS.app"
-            BlueprintName = "BaseProject-tvOS"
-            ReferencedContainer = "container:BaseProject.xcodeproj">
+            BuildableName = "PokerTime-tvOS.app"
+            BlueprintName = "PokerTime-tvOS"
+            ReferencedContainer = "container:PokerTime.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "BaseProject-tvOS.app"
-            BlueprintName = "BaseProject-tvOS"
-            ReferencedContainer = "container:BaseProject.xcodeproj">
+            BuildableName = "PokerTime-tvOS.app"
+            BlueprintName = "PokerTime-tvOS"
+            ReferencedContainer = "container:PokerTime.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
