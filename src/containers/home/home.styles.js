@@ -46,7 +46,7 @@ const styles = ({
         flex: 1,
         flexDirection: "row",
         justifyContent: 'space-around',
-        marginTop: -50
+        marginTop: -60
     },
     content_buttons: {
         flex: 1,
@@ -69,6 +69,7 @@ const styles = ({
     content_animations: {
         flex: 1,
         flexDirection: "row",
+        marginTop: 15,
         justifyContent: 'space-around'
     },
     content_animations_coin: {
