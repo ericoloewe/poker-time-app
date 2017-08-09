@@ -3,7 +3,7 @@
  */
 
 import * as React from "react";
-import { View, Image } from 'react-native';
+import { View, Image, TouchableHighlight } from 'react-native';
 import { styles } from "./home.styles";
 import { LB } from '../../configs/index';
 import { TemplateBuilder } from '../../styles/index';
@@ -27,26 +27,31 @@ export class Home extends React.Component {
                     <Image source={require("../../medias/images/cards.png")} style={styles.content_cards_image} />
                 </View>
                 <View style={styles.content_buttons}>
-                    <Row>
-                        <Col style={styles.content_buttons_col}>
-                            <PokerCoinButton onPress={() => this.goToCalculator()}>
-                                <Icon name='calculator' />
-                            </PokerCoinButton>
-                        </Col>
-                        <Col style={styles.content_buttons_col}>
-                            <PokerCoinButton onPress={() => this.goToBankhall()}>
-                                <Icon name='pulse' />
-                            </PokerCoinButton>
-                        </Col>
-                    </Row>
-                    <Button dark bordered large iconLeft style={styles.content_buttons_button} onPress={() => this.goToTryLuck()}> 
-                        <Icon name='baseball' />
-                        <Text style={styles.content_buttons_button_text}>{LB.build("CONTAINERS.HOME.TRY_LUCK")}</Text>
-                    </Button>
-                    <Button dark bordered large iconLeft style={styles.content_buttons_button} onPress={() => this.goToTournament()}>
-                        <Icon name='flame' />
-                        <Text style={styles.content_buttons_button_text}>{LB.build("CONTAINERS.HOME.TOURNAMENTS")}</Text>
-                    </Button>
+                    <Image source={require("../../medias/images/banner.png")} style={styles.content_image} />
+                    <View style={styles.content_coin}>
+                        <TouchableHighlight underlayColor={"rgba(0, 0, 0, .3)"} style={styles.content_coin_touchable} onPress={() => this.goToTryLuck()}>
+                            <Image source={require("../../medias/images/clover-coin.png")} style={styles.content_coin_touchable_image} />
+                        </TouchableHighlight>
+                    </View>
+                    <View style={styles.content_links}>
+                        <PokerCoinButton onPress={() => this.goToCalculator()}>
+                            <Icon name='calculator' />
+                        </PokerCoinButton>
+                        <PokerCoinButton onPress={() => this.goToBankhall()}>
+                            <Icon name='pulse' />
+                        </PokerCoinButton>
+                    </View>
+                    <View style={styles.content_animations}>
+                        <Image source={require("../../medias/images/3d-coin.png")} style={styles.content_animations_coin}>
+                            <Image source={require("../../medias/images/donkey.png")} style={styles.content_animations_coin_character} />
+                        </Image>
+                        <Image source={require("../../medias/images/3d-coin.png")} style={{...styles.content_animations_coin, marginTop: 20}}>
+                            <Image source={require("../../medias/images/bomb.png")} style={styles.content_animations_coin_character} />
+                        </Image>
+                        <Image source={require("../../medias/images/3d-coin.png")} style={styles.content_animations_coin}>
+                            <Image source={require("../../medias/images/shark.png")} style={styles.content_animations_coin_character} />
+                        </Image>
+                    </View>
                 </View>
             </Content>
         );

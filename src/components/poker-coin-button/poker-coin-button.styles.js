@@ -4,16 +4,15 @@ let pokerCoinSize = 70;
 
 const styles = {
     button_container: {
-        flex: 1,
+        margin: 4,
         alignItems: "center",
         flexDirection: "column",
-        backgroundColor: "transparent"
+        backgroundColor: "transparent",
+        width: pokerCoinSize,
+        height: pokerCoinSize
     },
     button_own: {
         position: 'relative',
-        margin: 4,
-        width: pokerCoinSize,
-        height: pokerCoinSize,
         bottom: 0,
         justifyContent: "center",
         alignItems: "center",

@@ -27,6 +27,10 @@ export class Settings extends React.Component {
                         <Icon name='book' />
                         <Text>{LB.build("CONTAINERS.SETTINGS.ABOUT")}</Text>
                     </Button>
+                    <Button dark bordered large iconLeft style={styles.content_buttons_button} onPress={() => this.goToTournament()}>
+                        <Icon name='flame' />
+                        <Text style={styles.content_buttons_button_text}>{LB.build("CONTAINERS.HOME.TOURNAMENTS")}</Text>
+                    </Button>
                 </View>
             </Content>
         );

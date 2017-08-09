@@ -13,7 +13,8 @@ export class PokerCoinButton extends React.Component {
     static propTypes = {
         onPress: PropTypes.func,
         onPressIn: PropTypes.func,
-        onPressOut: PropTypes.func
+        onPressOut: PropTypes.func,
+        styles: PropTypes.object
     };
 
     constructor() {
@@ -46,7 +47,7 @@ export class PokerCoinButton extends React.Component {
         Animated.timing(this.state.imageScale, animation).start();
 
         return (
-            <View style={styles.button_container}>
+            <View style={{...styles.button_container, ...this.props.styles}}>
                 <TouchableWithoutFeedback onPressOut={() => this.callOnPressOut()} onPressIn={() => this.callOnPressIn()} onPress={() => this.callOnPress()}>
                     <Animated.View style={{...styles.button_own, ...buttonCustomStyles}}>
                         <Image source={require("../../medias/images/poker-coin.png")} style={{...styles.button_image}}>
