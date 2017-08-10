@@ -46,7 +46,7 @@ export class Home extends React.Component {
                             <Image source={require("../../medias/images/donkey.png")} style={styles.content_animations_coin_character} />
                         </Image>
                         <Image source={require("../../medias/images/3d-coin.png")} style={{...styles.content_animations_coin, marginTop: 20}}>
-                            <Image source={require("../../medias/images/bomb.png")} style={styles.content_animations_coin_character} />
+                            <Image source={require("../../medias/images/balance.png")} style={styles.content_animations_coin_character} />
                         </Image>
                         <Image source={require("../../medias/images/3d-coin.png")} style={styles.content_animations_coin}>
                             <Image source={require("../../medias/images/shark.png")} style={styles.content_animations_coin_character} />
