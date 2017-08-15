@@ -1,5 +1,5 @@
 /**
- * Containers / Round Button
+ * Components / Round Button
  */
 
 import * as React from "react";
