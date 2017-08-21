@@ -1,0 +1,9 @@
+{
+    "TITLE": "Entrar",
+    "FORM": {
+        "FACEBOOK_BUTTON": "Entrar com Facebook",
+        "USERNAME": "Usuario",
+        "PASSWORD": "Senha",
+        "BUTTON": "Entrar"
+    }
+}

@@ -58,10 +58,6 @@ export class Home extends React.Component {
     goToBankhall(e) {
         this.props.navigation.navigate('Bankhall');
     }
-
-    goToTournament(e) {
-        this.props.navigation.navigate('Tournament');
-    }
 }
 
 export { Home as Component };

@@ -38,5 +38,9 @@
     {
         "key": "tournament-detail",
         "component": "TournamentDetail"
+    },
+    {
+        "key": "login",
+        "component": "Login"
     }
 ]

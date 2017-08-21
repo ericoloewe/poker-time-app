@@ -29,11 +29,23 @@ export class Settings extends React.Component {
                     </Button>
                     <Button dark bordered large iconLeft style={styles.content_buttons_button} onPress={() => this.goToTournament()}>
                         <Icon name='flame' />
-                        <Text style={styles.content_buttons_button_text}>{LB.build("CONTAINERS.HOME.TOURNAMENTS")}</Text>
+                        <Text style={styles.content_buttons_button_text}>{LB.build("CONTAINERS.SETTINGS.TOURNAMENTS")}</Text>
+                    </Button>
+                    <Button dark bordered large iconLeft style={styles.content_buttons_button} onPress={() => this.goToLogin()}>
+                        <Icon name='flame' />
+                        <Text style={styles.content_buttons_button_text}>{LB.build("CONTAINERS.SETTINGS.LOGIN")}</Text>
                     </Button>
                 </View>
             </Content>
         );
+    }
+
+    goToTournament(e) {
+        this.props.navigation.navigate('Tournament');
+    }
+
+    goToLogin(e) {
+        this.props.navigation.navigate('Login');
     }
 }
 

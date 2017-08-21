@@ -1,46 +1,6 @@
-import {
-    ABOUT,
-    BANKHALL,
-    BANKHALL_BALANCE,
-    BANKHALL_REGISTER,
-    HOME,
-    SETTINGS,
-    TRY_LUCK,
-    TOURNAMENT,
-    TOURNAMENT_REGISTER,
-    TOURNAMENT_LIST,
-    TOURNAMENT_DETAIL
-} from "./containers/index";
-
-import {
-    TOURNAMENT_DETAIL as COMPONENT_TOURNAMENT_DETAIL
-} from "./components/index";
-
-import {
-    VALUES as GENERAL_VALUES
-} from "./general/index";
-
-const CONTAINERS = {
-    ABOUT,
-    BANKHALL,
-    BANKHALL_BALANCE,
-    BANKHALL_REGISTER,
-    HOME,
-    SETTINGS,
-    TRY_LUCK,
-    TOURNAMENT,
-    TOURNAMENT_REGISTER,
-    TOURNAMENT_LIST,
-    TOURNAMENT_DETAIL
-};
-
-const COMPONENTS = {
-    TOURNAMENT_DETAIL: COMPONENT_TOURNAMENT_DETAIL
-};
-
-const GENERAL = {
-    VALUES: GENERAL_VALUES
-};
+import * as CONTAINERS from "./containers/index";
+import * as COMPONENTS from "./components/index";
+import * as GENERAL from "./general/index";
 
 export {
     CONTAINERS,
